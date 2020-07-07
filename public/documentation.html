@@ -12,6 +12,107 @@
     about different movies, directors, and genres. Users of this application will be able to
     sign up, update their personal information and create a list of their favorite movies. </p>
 
+  <table>
+    <tr>
+      <th>Business Logic</th>
+      <th>URL</th>
+      <th>HTTP Method</th>
+      <th>Request Body Data Format</th>
+      <th>Response Body Data Format</th>
+    </tr>
+    <tr>
+      <td>Get a list of all movies. </td>
+      <td>/movies </td>
+      <td>GET</td>
+      <td>None</td>
+      <td>A JSON object holding data about all the movies.</td>
+    </tr>
+    <tr>
+      <td> Get data about a single movie by title </td>
+      <td> /movies:title </td>
+      <td>GET</td>
+      <td>None</td>
+      <td>A JSON object holding data about a single movie,
+        containing description, genre, director, image URL,
+        and whether it’s featured or not. Example: {
+        description:'',
+        genre:'',
+        director:'',
+        imageURL:'',
+        featured:
+        }
+      </td>
+    </tr>
+    <tr>
+      <td>Return data about a genre by title.</td>
+      <td>/movies:title/genre</td>
+      <td>GET</td>
+      <td>None</td>
+      <td>A text message containing the genre/description.
+      </td>
+    </tr>
+    <tr>
+      <td>Return data about a director by name (bio, birth year, death year)</td>
+      <td>/movies:director</td>
+      <td>GET</td>
+      <td>None</td>
+      <td>A JSON object containing information about the director. Example: {
+        bio:'',
+        birthYear:'',
+        deathYear:''
+        }</td>
+    </tr>
+    <tr>
+      <td>Allow new users to register.</td>
+      <td>/movies</td>
+      <td>POST</td>
+      <td>A JSON object holding data about the user to add, like:
+        {name: '',
+        email:'',
+        favoriteMovies:''
+        }</td>
+
+      <td>A text message indicating that the user was successfully added.</td>
+    </tr>
+    <tr>
+      <td>Allow users to update their info(username, password, email, date of birth).</td>
+      <td>/users:name/info</td>
+      <td>PUT</td>
+      <td> A JSON object holding data about the info to update. Example:{
+        name:'',
+        email:'',
+        favoriteMovies:''
+        }</td>
+      <td>A text message indicating that the user info was successfully updated.</td>
+    </tr>
+    <tr>
+      <td>Allow users to add a movie to their list of favorites.</td>
+      <td>/users:name/favorites</td>
+      <td>PUT</td>
+      <td> A JSON object holding data about the movie to add to the list. Example:
+        {description: '',
+        genre:'',
+        director:'',
+        image URL: '',
+        featured: }</td>
+      <td>A text message indicating that the movie was added to the favorites list.</td>
+    </tr>
+    <tr>
+      <td>Allow users to remove a movie from their list of favorites.</td>
+      <td>/users:name/favorites</td>
+      <td>DELETE</td>
+      <td>None</td>
+      <td>A text message indicating whether the movie was successfully removed.</td>
+    </tr>
+    <tr>
+      <td>Allow existing users to deregister.</td>
+      <td>/users:name</td>
+      <td>DELETE</td>
+      <td>None</td>
+      <td>A text message indicating whether deregistration was successful.</td>
+    </tr>
+  </table>
+
 </body>
 
 </html>
