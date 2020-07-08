@@ -35,13 +35,13 @@ app.get('/movies', (req, res) => {
 
 //Get data about a single movie, by title
 
-app.get('/movies:title', (req, res) => {
+app.get('/movies/:title', (req, res) => {
   res.send('Successfull GET request returning data about a single movie by name.');
 });
 
 // Get data about a genre by title
 
-app.get('/movies:title/genre', (req, res) => {
+app.get('/movies/:title/genre', (req, res) => {
   res.send('Successfull GET request returning data about a genre by title.');
 });
 
@@ -59,7 +59,7 @@ app.post('/users', (req, res) => {
 
 // Update user info
 
-app.put('/users:name/info', (req, res) => {
+app.put('/users/:name/info', (req, res) => {
   res.send('Successfull PUT request updating user info.');
 });
 
@@ -71,13 +71,13 @@ app.post('/users/:name/favorites', (req, res) => {
 
 //Delete a movie from the users list of favorites
 
-app.delete('/users:name/favorites', (req, res) => {
+app.delete('/users/:name/favorites', (req, res) => {
   res.send('Successfull DELETE request removing a movie from the users list of favorites.');
 });
 
 // Deregister a user
 
-app.delete('/users:name', (req, res) => {
+app.delete('/users/:name', (req, res) => {
   res.send('Successfull DELETE request removing a user');
 });
 

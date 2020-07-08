@@ -29,7 +29,7 @@
     </tr>
     <tr>
       <td> Get data about a single movie by title </td>
-      <td> /movies:title </td>
+      <td> /movies/:title </td>
       <td>GET</td>
       <td>None</td>
       <td>A JSON object holding data about a single movie,
@@ -45,7 +45,7 @@
     </tr>
     <tr>
       <td>Return data about a genre by title.</td>
-      <td>/movies:title/genre</td>
+      <td>/movies/:title/genre</td>
       <td>GET</td>
       <td>None</td>
       <td>A text message containing the genre/description.
@@ -76,7 +76,7 @@
     </tr>
     <tr>
       <td>Allow users to update their info(username, password, email, date of birth).</td>
-      <td>/users:name/info</td>
+      <td>/users/:name/info</td>
       <td>PUT</td>
       <td> A JSON object holding data about the info to update. Example:{
         name:'',
@@ -87,7 +87,7 @@
     </tr>
     <tr>
       <td>Allow users to add a movie to their list of favorites.</td>
-      <td>/users:name/favorites</td>
+      <td>/users/:name/favorites</td>
       <td>POST</td>
       <td> A JSON object holding data about the movie to add to the list. Example:
         {description: '',
@@ -99,14 +99,14 @@
     </tr>
     <tr>
       <td>Allow users to remove a movie from their list of favorites.</td>
-      <td>/users:name/favorites</td>
+      <td>/users/:name/favorites</td>
       <td>DELETE</td>
       <td>None</td>
       <td>A text message indicating whether the movie was successfully removed.</td>
     </tr>
     <tr>
       <td>Allow existing users to deregister.</td>
-      <td>/users:name</td>
+      <td>/users/:name</td>
       <td>DELETE</td>
       <td>None</td>
       <td>A text message indicating whether deregistration was successful.</td>
