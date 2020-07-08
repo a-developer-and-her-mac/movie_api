@@ -53,7 +53,7 @@
     </tr>
     <tr>
       <td>Return data about a director by name (bio, birth year, death year)</td>
-      <td>/movies:director</td>
+      <td>/movies/:director</td>
       <td>GET</td>
       <td>None</td>
       <td>A JSON object containing information about the director. Example: {
@@ -88,7 +88,7 @@
     <tr>
       <td>Allow users to add a movie to their list of favorites.</td>
       <td>/users:name/favorites</td>
-      <td>PUT</td>
+      <td>POST</td>
       <td> A JSON object holding data about the movie to add to the list. Example:
         {description: '',
         genre:'',

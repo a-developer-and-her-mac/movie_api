@@ -47,7 +47,7 @@ app.get('/movies:title/genre', (req, res) => {
 
 // Get data about a director by name
 
-app.get('/movies:director', (req, res) => {
+app.get('/movies/:director', (req, res) => {
   res.send('Successfull GET request returning data about a director by name.');
 });
 
@@ -63,10 +63,10 @@ app.put('/users:name/info', (req, res) => {
   res.send('Successfull PUT request updating user info.');
 });
 
-// Update users list of favorite movies
+// Add users list of favorite movies
 
-app.put('/users:name/favorites', (req, res) => {
-  res.send('Successfull PUT request to update list of users favorite movies.');
+app.post('/users/:name/favorites', (req, res) => {
+  res.send('Successfull POST request to add list of users favorite movies.');
 });
 
 //Delete a movie from the users list of favorites
