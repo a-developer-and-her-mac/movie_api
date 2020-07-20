@@ -29,37 +29,38 @@
     </tr>
     <tr>
       <td> Get data about a single movie by title </td>
-      <td> /movies/:title </td>
+      <td> /movies/:Title </td>
       <td>GET</td>
       <td>None</td>
       <td>A JSON object holding data about a single movie,
         containing description, genre, director, image URL,
         and whether it’s featured or not. Example: {
-        description:'',
-        genre:'',
-        director:'',
-        imageURL:'',
-        featured:
+        Description:'',
+        Genre:'',
+        Director:'',
+        ImageUrl:'',
+        Featured:
         }
       </td>
     </tr>
     <tr>
       <td>Return data about a genre by title.</td>
-      <td>/movies/:title/genre</td>
+      <td>/movies/:Title/genre</td>
       <td>GET</td>
       <td>None</td>
-      <td>A text message containing the genre/description.
+      <td>A JSON object containing the genre name and description.
       </td>
     </tr>
     <tr>
       <td>Return data about a director by name (bio, birth year, death year)</td>
-      <td>/movies/:director</td>
+      <td>/movies/Director/:Name</td>
       <td>GET</td>
       <td>None</td>
       <td>A JSON object containing information about the director. Example: {
-        bio:'',
-        birthYear:'',
-        deathYear:''
+        Name: '',
+        Bio:'',
+        BirthYear:'',
+        DeathYear:''
         }</td>
     </tr>
     <tr>
@@ -67,46 +68,48 @@
       <td>/users</td>
       <td>POST</td>
       <td>A JSON object holding data about the user to add, like:
-        {name: '',
-        email:'',
-        favoriteMovies:''
+        {Username: '',
+        Password:'',
+        Email: '',
+        Birthday: '',
         }</td>
 
-      <td>A text message indicating that the user was successfully added.</td>
+      <td>A JSON object containing the info for the user just added.</td>
     </tr>
     <tr>
       <td>Allow users to update their info(username, password, email, date of birth).</td>
-      <td>/users/:name/info</td>
+      <td>/users/:Username/info</td>
       <td>PUT</td>
       <td> A JSON object holding data about the info to update. Example:{
-        name:'',
-        email:'',
-        favoriteMovies:''
+        Username:'',
+        Password: '',
+        Email:'',
+        Birthday: '',
         }</td>
-      <td>A text message indicating that the user info was successfully updated.</td>
+      <td>A JSON object containing the info that was successfully updated.</td>
     </tr>
     <tr>
       <td>Allow users to add a movie to their list of favorites.</td>
-      <td>/users/:name/favorites</td>
+      <td>/users/:Username/favorites</td>
       <td>POST</td>
       <td> A JSON object holding data about the movie to add to the list. Example:
-        {description: '',
-        genre:'',
-        director:'',
-        image URL: '',
-        featured: }</td>
-      <td>A text message indicating that the movie was added to the favorites list.</td>
+        {Description: '',
+        Genre:'',
+        Director:'',
+        ImageUrl: '',
+        Featured: }</td>
+      <td>A JSON object containing info for the movie that was just added.</td>
     </tr>
     <tr>
       <td>Allow users to remove a movie from their list of favorites.</td>
-      <td>/users/:name/favorites</td>
+      <td>/users/:Username/favorites</td>
       <td>DELETE</td>
       <td>None</td>
       <td>A text message indicating whether the movie was successfully removed.</td>
     </tr>
     <tr>
       <td>Allow existing users to deregister.</td>
-      <td>/users/:name</td>
+      <td>/users/:Username</td>
       <td>DELETE</td>
       <td>None</td>
       <td>A text message indicating whether deregistration was successful.</td>
