@@ -1,5 +1,6 @@
 const express = require("express");
 const morgan = require("morgan");
+const bodyParser= require('body-parser');
 const app = express();
 const mongoose = require("mongoose");
 const Models = require("./models.js");
@@ -16,6 +17,8 @@ mongoose.connect("mongodb://localhost:27017/faveFlixDB", {
 let topTenMovies = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
 
 app.use(morgan("common"));
+
+app.use(bodyParser.json());
 
 // GET requests
 app.get("/", (req, res) => {
