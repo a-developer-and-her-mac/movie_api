@@ -56,12 +56,7 @@
       <td>/movies/Director/:Name</td>
       <td>GET</td>
       <td>None</td>
-      <td>A JSON object containing information about the director. Example: {
-        Name: '',
-        Bio:'',
-        BirthYear:'',
-        DeathYear:''
-        }</td>
+      <td>A text message containing information about the director. </td>
     </tr>
     <tr>
       <td>Allow new users to register.</td>
@@ -90,19 +85,15 @@
     </tr>
     <tr>
       <td>Allow users to add a movie to their list of favorites.</td>
-      <td>/users/:Username/favorites</td>
+      <td>/users/:Username/Movies/MovieID</td>
       <td>POST</td>
-      <td> A JSON object holding data about the movie to add to the list. Example:
-        {Description: '',
-        Genre:'',
-        Director:'',
-        ImageUrl: '',
-        Featured: }</td>
-      <td>A JSON object containing info for the movie that was just added.</td>
+      <td> A JSON object holding the MovieID. Example:
+        {FavoriteMovies: '' }</td>
+      <td>A JSON object containing the user info, including the array of favorite movies.</td>
     </tr>
     <tr>
       <td>Allow users to remove a movie from their list of favorites.</td>
-      <td>/users/:Username/favorites</td>
+      <td>/users/:Username/Movies/MovieID</td>
       <td>DELETE</td>
       <td>None</td>
       <td>A text message indicating whether the movie was successfully removed.</td>
