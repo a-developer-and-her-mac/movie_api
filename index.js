@@ -3,6 +3,8 @@ const morgan = require("morgan");
 const bodyParser= require('body-parser');
 const app = express();
 const mongoose = require("mongoose");
+const passport = require('passport');
+require('./passport');
 const Models = require("./models.js");
 
 const Movies = Models.Movie;
@@ -19,6 +21,8 @@ let topTenMovies = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
 app.use(morgan("common"));
 
 app.use(bodyParser.json());
+
+let auth = require('./auth')(app);
 
 // GET requests
 app.get("/", (req, res) => {
