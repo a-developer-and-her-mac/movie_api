@@ -10,6 +10,8 @@ const Models = require("./models.js");
 const Movies = Models.Movie;
 const Users = Models.User;
 
+const cors = require('cors');
+app.use(cors());
 
 mongoose.connect("mongodb://localhost:27017/faveFlixDB", {
   useNewUrlParser: true,
@@ -103,6 +105,7 @@ app.get("/movies/Director/:Name", passport.authenticate('jwt', {
 // Post new users
 
 app.post("/users", (req, res) => {
+  let hashedPassword = Users.hashPassword(req.body.Password);
   Users.findOne({
       Username: req.body.Username
     })
@@ -112,7 +115,7 @@ app.post("/users", (req, res) => {
       } else {
         Users.create({
             Username: req.body.Username,
-            Password: req.body.Password,
+            Password: hashedPassword,
             Email: req.body.Email,
             Birthday: req.body.Birthday,
           })
