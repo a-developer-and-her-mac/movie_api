@@ -1,22 +1,33 @@
-const express = require("express");
-const morgan = require("morgan");
-const bodyParser = require('body-parser');
-const app = express();
-const passport = require('passport');
-require('./passport');
-const mongoose = require("mongoose");
-const Models = require("./models.js");
-
-const Movies = Models.Movie;
-const Users = Models.User;
-
-const cors = require('cors');
-app.use(cors());
+const express = require("express"),
+      morgan = require("morgan"),
+      bodyParser = require('body-parser'),
+      app = express(),
+      passport = require('passport'),
+      mongoose = require("mongoose"),
+      Models = require("./models.js"),
+      Movies = Models.Movie,
+      Users = Models.User,
+      cors = require('cors');
 
 const {
   check,
   validationResult
 } = require('express-validator');
+
+
+app.use(cors());
+
+app.use(morgan("common"));
+
+app.use(bodyParser.json());
+
+
+
+require('./passport');
+
+let auth = require('./auth')(app);
+
+
 
 /* mongoose.connect("mongodb://localhost:27017/faveFlixDB", {
   useNewUrlParser: true,
@@ -32,11 +43,7 @@ mongoose.connect(process.env.CONNECTION_URI, {
 // List of top ten movies
 let topTenMovies = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
 
-app.use(morgan("common"));
 
-app.use(bodyParser.json());
-
-let auth = require('./auth')(app);
 
 // GET requests
 app.get("/", (req, res) => {
@@ -48,7 +55,6 @@ app.get("/movies/top", (req, res) => {
 });
 
 //Get a list of data about all movies
-
 app.get("/movies", passport.authenticate('jwt', {
   session: false
 }), (req, res) => {
@@ -63,7 +69,6 @@ app.get("/movies", passport.authenticate('jwt', {
 });
 
 //Get data about a single movie, by title
-
 app.get("/movies/:Title", passport.authenticate('jwt', {
   session: false
 }), (req, res) => {
@@ -80,7 +85,6 @@ app.get("/movies/:Title", passport.authenticate('jwt', {
 });
 
 // Get data about a genre by title
-
 app.get("/movies/:Title/genre", passport.authenticate('jwt', {
   session: false
 }), (req, res) => {
@@ -97,7 +101,6 @@ app.get("/movies/:Title/genre", passport.authenticate('jwt', {
 });
 
 // Get data about a director by name
-
 app.get("/movies/Director/:Name", passport.authenticate('jwt', {
   session: false
 }), (req, res) => {
@@ -114,7 +117,6 @@ app.get("/movies/Director/:Name", passport.authenticate('jwt', {
 });
 
 // Post new users
-
 app.post("/users",
   // Validation logic for request.
   [check("Username", "Username is required.").isLength({
@@ -163,7 +165,6 @@ app.post("/users",
       });
   });
 // Update user info
-
 app.put("/users/:Username/info",
   // Validation logic for request.
   [check("Username", "Username is required.").isLength({
@@ -209,7 +210,6 @@ app.put("/users/:Username/info",
   });
 
 // Add users list of favorite movies
-
 app.post("/users/:Username/Movies/:MovieID", passport.authenticate('jwt', {
   session: false
 }), (req, res) => {
@@ -234,7 +234,6 @@ app.post("/users/:Username/Movies/:MovieID", passport.authenticate('jwt', {
 });
 
 //Delete a movie from the users list of favorites
-
 app.delete("/users/:Username/Movies/:MovieID", passport.authenticate('jwt', {
   session: false
 }), (req, res) => {
@@ -259,7 +258,6 @@ app.delete("/users/:Username/Movies/:MovieID", passport.authenticate('jwt', {
 });
 
 // Deregister a user
-
 app.delete("/users/:Username", passport.authenticate('jwt', {
   session: false
 }), (req, res) => {
@@ -287,7 +285,6 @@ app.use((err, req, res, next) => {
 });
 
 // Listen for requests
-
 const port = process.env.PORT || 8080;
 app.listen(port, "0.0.0.0", () => {
   console.log("Listening on Port " + port);
