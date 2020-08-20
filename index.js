@@ -1,13 +1,13 @@
 const express = require("express"),
-      morgan = require("morgan"),
-      bodyParser = require('body-parser'),
-      app = express(),
-      passport = require('passport'),
-      mongoose = require("mongoose"),
-      Models = require("./models.js"),
-      Movies = Models.Movie,
-      Users = Models.User,
-      cors = require('cors');
+  morgan = require("morgan"),
+  bodyParser = require('body-parser'),
+  app = express(),
+  passport = require('passport'),
+  mongoose = require("mongoose"),
+  Models = require("./models.js"),
+  Movies = Models.Movie,
+  Users = Models.User,
+  cors = require('cors');
 
 const {
   check,
@@ -55,9 +55,7 @@ app.get("/movies/top", (req, res) => {
 });
 
 //Get a list of data about all movies
-app.get("/movies", passport.authenticate('jwt', {
-  session: false
-}), (req, res) => {
+app.get("/movies", (req, res) => {
   Movies.find()
     .then((movies) => {
       res.status(201).json(movies);
