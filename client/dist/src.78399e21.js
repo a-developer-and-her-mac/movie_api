@@ -30089,19 +30089,25 @@ var MainView = /*#__PURE__*/function (_React$Component) {
 
   var _super = _createSuper(MainView);
 
-  function MainView() {
+  function MainView(props) {
+    var _this;
+
     _classCallCheck(this, MainView);
 
-    return _super.apply(this, arguments);
+    _this = _super.call(this, props);
+    _this.state = {
+      movies: []
+    };
+    return _this;
   }
 
   _createClass(MainView, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var _this = this;
+      var _this2 = this;
 
-      _axios.default.get('<https://faveflix-api.herokuapp.com/movies>').then(function (response) {
-        _this.setState({
+      _axios.default.get('https://faveflix-api.herokuapp.com/movies').then(function (response) {
+        _this2.setState({
           movies: response.data
         });
       }).catch(function (error) {
@@ -30289,7 +30295,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52163" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59586" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

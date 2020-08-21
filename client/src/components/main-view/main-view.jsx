@@ -3,8 +3,15 @@ import axios from "axios";
 
 export class MainView extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      movies: [],
+    };
+  }
+
   componentDidMount() {
-    axios.get('<https://faveflix-api.herokuapp.com/movies>')
+    axios.get('https://faveflix-api.herokuapp.com/movies')
       .then(response => {
         this.setState({
           movies: response.data
