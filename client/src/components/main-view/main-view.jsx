@@ -30,7 +30,13 @@ export class MainView extends React.Component {
 
     const { movies } = this.state;
 
-    if (!movies) return <div className="main-view" />;
+    if (!movies.length) {
+      return (
+        <div className="main-view">
+          No Movies
+        </div>
+      );
+    }
 
     return (
       <div className="main-view">

@@ -30118,9 +30118,13 @@ var MainView = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       var movies = this.state.movies;
-      if (!movies) return _react.default.createElement("div", {
-        className: "main-view"
-      });
+
+      if (!movies.length) {
+        return _react.default.createElement("div", {
+          className: "main-view"
+        }, "No Movies");
+      }
+
       return _react.default.createElement("div", {
         className: "main-view"
       }, movies.map(function (movie) {
@@ -30295,7 +30299,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59586" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61883" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
