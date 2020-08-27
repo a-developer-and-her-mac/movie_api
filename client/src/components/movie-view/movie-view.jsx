@@ -9,6 +9,9 @@ export class MovieView extends React.Component {
     this.state = {};
   }
 
+  goBack = () => {
+    window.open('/', '_self')
+  }
 
   render() {
     const { movie } = this.props;
@@ -35,7 +38,7 @@ export class MovieView extends React.Component {
           <span className="label">Director: </span>
           <span className="value">{movie.Director.Name}</span>
         </div>
-        <button onClick={() => this.setState(<MainView />)}>Go Back</button>
+        <button onClick={this.goBack}>Go Back</button>
       </div>
     );
   }
