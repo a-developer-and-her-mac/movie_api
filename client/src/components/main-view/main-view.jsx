@@ -2,6 +2,8 @@ import React from "react";
 import axios from "axios";
 import PropTypes from "prop-types";
 import Container from "react-bootstrap/Container";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 
 import "./main-view.scss";
 
@@ -54,19 +56,25 @@ export class MainView extends React.Component {
 
     if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
 
+
     if (!movies) return <div className="main-view" />;
 
     return (
-      <Container>
-        <div className="main-view">
-          {selectedMovie
-            ? <MovieView movie={selectedMovie} />
-            : movies.map(movie => (
-              <MovieCard key={movie._id} movie={movie} onClick={movie => this.onMovieClick(movie)} />
-            ))
-          }
-        </div>
+      <Container className="main-view-container">
+        <Row>
+          <Col>
+            <div className="main-view">
+              {selectedMovie
+                ? <MovieView movie={selectedMovie} />
+                : movies.map(movie => (
+                  <MovieCard key={movie._id} movie={movie} onClick={movie => this.onMovieClick(movie)} />
+                ))
+              }
+            </div>
+          </Col>
+        </Row>
       </Container>
+
     );
   }
 }

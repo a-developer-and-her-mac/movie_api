@@ -10,7 +10,7 @@ import "./registration-view.scss";
 export function RegistrationView(props) {
 
   return (
-    <Container>
+    <Container className="registration-view-container">
       <Form>
 
         <Form.Group controlId="formBasicUsername">

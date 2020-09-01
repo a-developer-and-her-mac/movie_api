@@ -3,8 +3,10 @@ import PropTypes from "prop-types";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import Col from "react-bootstrap/Col";
 
 import "./login-view.scss";
+import { RegistrationView } from "../registration-view/registration-view";
 
 export function LoginView(props) {
   const [username, setUserName] = useState("");
@@ -18,9 +20,14 @@ export function LoginView(props) {
     props.onLoggedIn(username);
   };
 
+  const handleRegister = (e) => {
+    e.preventDefault();
+
+  }
+
   return (
-    <Container>
-      <Form>
+    <Container className="form-container">
+      <Col><Form>
         <Form.Group controlId="formBasicUsername">
           <Form.Label>Username</Form.Label>
           <Form.Control type="text" placeholder="Username" value={username} onChange={e => setUserName(e.target.value)} />
@@ -30,10 +37,12 @@ export function LoginView(props) {
           <Form.Label>Password</Form.Label>
           <Form.Control type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
         </Form.Group>
-        <Button className="login-button" type="button" onClick={handleSubmit}>
+        <Button type="button" onClick={handleSubmit}>
           Login
-  </Button>
+        </Button>
+
       </Form>
+      </Col>
     </Container>
   );
 }

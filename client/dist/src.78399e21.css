@@ -1,5 +1,32 @@
-.login-button {
+.main-view-container {
+  font-family: "Poiret One", sans-serif;
+}
+.registration-view-container {
+  font-family: "Poiret One", sans-serif;
+}
+.button-login {
   background-color: #4b5d67;
+}
+
+.form-container {
+  font-family: "Poiret One", sans-serif;
+  margin-top: 20px;
+}
+.movie-card-container {
+  font-family: "Poiret One", sans-serif;
+}
+
+.Card {
+  width: 16rem;
+}
+.movie-description,
+.movie-genre,
+.movie-director {
+  font-size: 20px;
+}
+
+.movie-view-container {
+  font-family: "Poiret One", sans-serif;
 }
 .fave-Flix {
   color: steelblue;
