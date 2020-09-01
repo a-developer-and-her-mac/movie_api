@@ -33314,21 +33314,27 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       if (!movies) return _react.default.createElement("div", {
         className: "main-view"
       });
-      return _react.default.createElement(_Container.default, {
-        className: "main-view-container"
-      }, _react.default.createElement(_Row.default, null, _react.default.createElement(_Col.default, null, _react.default.createElement("div", {
+      return _react.default.createElement("div", {
         className: "main-view"
-      }, selectedMovie ? _react.default.createElement(_movieView.MovieView, {
+      }, _react.default.createElement(_Container.default, {
+        className: "main-view-container"
+      }, _react.default.createElement(_Row.default, null, selectedMovie ? _react.default.createElement(_movieView.MovieView, {
         movie: selectedMovie
       }) : movies.map(function (movie) {
-        return _react.default.createElement(_movieCard.MovieCard, {
+        return _react.default.createElement(_Col.default, {
+          key: movie._id,
+          xs: 8,
+          sm: 8,
+          md: 6,
+          lg: 4
+        }, _react.default.createElement(_movieCard.MovieCard, {
           key: movie._id,
           movie: movie,
           onClick: function onClick(movie) {
             return _this3.onMovieClick(movie);
           }
-        });
-      })))));
+        }));
+      }))));
     }
   }]);
 
@@ -33440,7 +33446,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50946" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56957" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
