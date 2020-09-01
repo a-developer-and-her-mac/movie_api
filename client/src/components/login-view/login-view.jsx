@@ -4,6 +4,7 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 
 import "./login-view.scss";
 import { RegistrationView } from "../registration-view/registration-view";
@@ -27,22 +28,25 @@ export function LoginView(props) {
 
   return (
     <Container className="form-container">
-      <Col><Form>
-        <Form.Group controlId="formBasicUsername">
-          <Form.Label>Username</Form.Label>
-          <Form.Control type="text" placeholder="Username" value={username} onChange={e => setUserName(e.target.value)} />
-        </Form.Group>
+      <Row>
+        <Col xs={1} sm={3} md={5} lg={8}>
+          <Form>
+            <Form.Group controlId="formBasicUsername">
+              <Form.Label className="username-label">Username</Form.Label>
+              <Form.Control type="text" placeholder="Username" value={username} onChange={e => setUserName(e.target.value)} />
+            </Form.Group>
 
-        <Form.Group controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
-        </Form.Group>
-        <Button type="button" onClick={handleSubmit}>
-          Login
+
+            <Form.Group controlId="formBasicPassword">
+              <Form.Label className="password-label">Password</Form.Label>
+              <Form.Control type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
+            </Form.Group>
+            <Button className="button-login" type="button" onClick={handleSubmit}>
+              Login
         </Button>
-
-      </Form>
-      </Col>
+          </Form>
+        </Col>
+      </Row>
     </Container>
   );
 }

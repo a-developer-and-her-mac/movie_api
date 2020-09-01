@@ -32701,6 +32701,8 @@ var _Form = _interopRequireDefault(require("react-bootstrap/Form"));
 
 var _Col = _interopRequireDefault(require("react-bootstrap/Col"));
 
+var _Row = _interopRequireDefault(require("react-bootstrap/Row"));
+
 require("./login-view.scss");
 
 var _registrationView = require("../registration-view/registration-view");
@@ -32750,9 +32752,16 @@ function LoginView(props) {
 
   return _react.default.createElement(_Container.default, {
     className: "form-container"
-  }, _react.default.createElement(_Col.default, null, _react.default.createElement(_Form.default, null, _react.default.createElement(_Form.default.Group, {
+  }, _react.default.createElement(_Row.default, null, _react.default.createElement(_Col.default, {
+    xs: 1,
+    sm: 3,
+    md: 5,
+    lg: 8
+  }, _react.default.createElement(_Form.default, null, _react.default.createElement(_Form.default.Group, {
     controlId: "formBasicUsername"
-  }, _react.default.createElement(_Form.default.Label, null, "Username"), _react.default.createElement(_Form.default.Control, {
+  }, _react.default.createElement(_Form.default.Label, {
+    className: "username-label"
+  }, "Username"), _react.default.createElement(_Form.default.Control, {
     type: "text",
     placeholder: "Username",
     value: username,
@@ -32761,7 +32770,9 @@ function LoginView(props) {
     }
   })), _react.default.createElement(_Form.default.Group, {
     controlId: "formBasicPassword"
-  }, _react.default.createElement(_Form.default.Label, null, "Password"), _react.default.createElement(_Form.default.Control, {
+  }, _react.default.createElement(_Form.default.Label, {
+    className: "password-label"
+  }, "Password"), _react.default.createElement(_Form.default.Control, {
     type: "password",
     placeholder: "Password",
     value: password,
@@ -32769,9 +32780,10 @@ function LoginView(props) {
       return setPassword(e.target.value);
     }
   })), _react.default.createElement(_Button.default, {
+    className: "button-login",
     type: "button",
     onClick: handleSubmit
-  }, "Login"))));
+  }, "Login")))));
 }
 
 LoginView.propTypes = {
@@ -32780,7 +32792,7 @@ LoginView.propTypes = {
     Password: _propTypes.default.string.isRequired
   })
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","./login-view.scss":"components/login-view/login-view.scss","../registration-view/registration-view":"components/registration-view/registration-view.jsx"}],"../node_modules/react-bootstrap/esm/divWithClassName.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","./login-view.scss":"components/login-view/login-view.scss","../registration-view/registration-view":"components/registration-view/registration-view.jsx"}],"../node_modules/react-bootstrap/esm/divWithClassName.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33040,12 +33052,14 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
         variant: "top",
         src: movie.ImagePath
       }), _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Card.default.Title, {
-        className: "font-weight-bold"
-      }, movie.Title), _react.default.createElement(_Card.default.Text, null, movie.Description), _react.default.createElement(_Button.default, {
+        className: "Card-Title"
+      }, movie.Title), _react.default.createElement(_Card.default.Text, {
+        className: "Card-Text"
+      }, movie.Description), _react.default.createElement(_Button.default, {
+        className: "button-open",
         onClick: function onClick() {
           return _onClick(movie);
-        },
-        variant: "link"
+        }
       }, "Open"))))));
     }
   }]);
@@ -33143,7 +33157,7 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
       }, _react.default.createElement(_Row.default, null, _react.default.createElement(_Col.default, null, _react.default.createElement("div", {
         className: "movie-view"
       }, _react.default.createElement("img", {
-        className: "movie-poster rounded mx-auto d-block",
+        className: "movie-poster",
         src: movie.ImagePath
       }), _react.default.createElement("div", {
         className: "movie-title text-center h2 font-weight-bold"
@@ -33170,7 +33184,8 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
       }, "Director: "), _react.default.createElement("span", {
         className: "value"
       }, movie.Director.Name)), _react.default.createElement(_Button.default, {
-        className: "button",
+        type: "button",
+        className: " button-goBack",
         onClick: this.goBack
       }, "Go Back")))));
     }
@@ -33446,7 +33461,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56957" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59941" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -6,4 +6,20 @@
 
 .movie-view-container {
   font-family: "Poiret One", sans-serif;
+  text-align: center;
+}
+
+.movie-poster {
+  margin: auto;
+  display: block;
+  border-radius: round;
+  margin-bottom: 10px;
+}
+
+.button-goBack {
+  background-color: #87556f;
+}
+
+.button-goBack:hover {
+  background-color: #59405c;
 }

@@ -23,9 +23,9 @@ export class MovieCard extends React.Component {
             <Card className="Card">
               <Card.Img variant="top" src={movie.ImagePath} />
               <Card.Body>
-                <Card.Title className="font-weight-bold">{movie.Title}</Card.Title>
-                <Card.Text>{movie.Description}</Card.Text>
-                <Button onClick={() => onClick(movie)} variant="link">Open</Button>
+                <Card.Title className="Card-Title">{movie.Title}</Card.Title>
+                <Card.Text className="Card-Text">{movie.Description}</Card.Text>
+                <Button className="button-open" onClick={() => onClick(movie)}>Open</Button>
               </Card.Body>
             </Card>
           </Col>

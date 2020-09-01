@@ -29,7 +29,7 @@ export class MovieView extends React.Component {
         <Row>
           <Col>
             <div className="movie-view">
-              <img className="movie-poster rounded mx-auto d-block" src={movie.ImagePath} />
+              <img className="movie-poster" src={movie.ImagePath} />
               <div className="movie-title text-center h2 font-weight-bold">
                 <span className="label font-italic">Title: </span>
                 <span className="value">{movie.Title}</span>
@@ -47,7 +47,7 @@ export class MovieView extends React.Component {
                 <span className="label font-italic">Director: </span>
                 <span className="value">{movie.Director.Name}</span>
               </div>
-              <Button className="button" onClick={this.goBack}>Go Back</Button>
+              <Button type="button" className=" button-goBack" onClick={this.goBack}>Go Back</Button>
             </div>
           </Col>
         </Row>

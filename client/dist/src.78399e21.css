@@ -11,13 +11,44 @@
 .form-container {
   font-family: "Poiret One", sans-serif;
   margin-top: 20px;
+  text-align: center;
+  margin-left: 22%;
+  margin-top: 15%;
+}
+
+.username-label,
+.password-label {
+  font-size: 20px;
+}
+
+.button-login {
+  background-color: #87556f;
+}
+
+.button-login:hover {
+  background-color: #59405c;
 }
 .movie-card-container {
   font-family: "Poiret One", sans-serif;
+  text-align: center;
 }
 
 .Card {
   width: 16rem;
+  margin-top: 10px;
+}
+
+.Card-Title {
+  font-weight: bold;
+}
+
+.button-open {
+  background-color: #87556f;
+  font-size: 25px;
+}
+
+.button-open:hover {
+  background-color: #59405c;
 }
 .movie-description,
 .movie-genre,
@@ -27,6 +58,22 @@
 
 .movie-view-container {
   font-family: "Poiret One", sans-serif;
+  text-align: center;
+}
+
+.movie-poster {
+  margin: auto;
+  display: block;
+  border-radius: round;
+  margin-bottom: 10px;
+}
+
+.button-goBack {
+  background-color: #87556f;
+}
+
+.button-goBack:hover {
+  background-color: #59405c;
 }
 .fave-Flix {
   color: steelblue;

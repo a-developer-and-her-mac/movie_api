@@ -1,7 +1,23 @@
 .movie-card-container {
   font-family: "Poiret One", sans-serif;
+  text-align: center;
 }
 
 .Card {
   width: 16rem;
+  margin-top: 10px;
+}
+
+.Card-Title {
+  font-weight: bold;
+}
+
+.button-open {
+  background-color: #87556f;
+  font-size: 25px;
+
+}
+
+.button-open:hover {
+  background-color: #59405c;
 }
