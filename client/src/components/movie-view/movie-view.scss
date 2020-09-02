@@ -3,6 +3,12 @@ $second-color: #59405c;
 $font-stack: "Poiret One",
 sans-serif;
 
+@mixin for-tablet-landscape-up {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
 .movie-title {
   text-align: center;
   font-weight: bold;
@@ -27,17 +33,25 @@ sans-serif;
 }
 
 .movie-poster {
-  margin: auto;
+  max-width: 100%;
+  height: auto;
   display: block;
   border-radius: 10px;
   margin-bottom: 10px;
+
+  @include for-tablet-landscape-up {
+    margin: auto;
+  }
 }
 
 .button-goBack {
   background-color: $first-color;
   margin: 20px auto 20px auto;
+  border: none;
 }
 
-.button-goBack:hover {
+.button-goBack:hover,
+.button-goBack:focus {
   background-color: $second-color;
+  border: none;
 }

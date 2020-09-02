@@ -33184,7 +33184,7 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
       }, movie.Director.Name)), _react.default.createElement(_Button.default, {
         className: " button-goBack",
         onClick: this.goBack
-      }, "Go Back")))));
+      }, "Back")))));
     }
   }]);
 
@@ -33458,7 +33458,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61391" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65205" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

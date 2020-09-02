@@ -21,8 +21,11 @@ sans-serif;
 .button-open {
   background-color: $first-color;
   font-size: 25px;
+  border: none;
 }
 
-.button-open:hover {
+.button-open:hover,
+.button-open:focus {
   background-color: $second-color;
+  border: none;
 }

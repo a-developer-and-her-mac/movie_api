@@ -36,9 +36,11 @@ sans-serif;
 
 .button-login {
   background-color: $first-color;
+  border: none;
 }
 
-.button-login:hover {
+.button-login:hover,
+.button-login:focus {
   background-color: $second-color;
-  ;
+  border: none;
 }

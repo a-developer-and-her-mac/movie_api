@@ -1,5 +1,6 @@
 .main-view-container {
   font-family: "Poiret One", sans-serif;
+  display: flex;
 }
 .registration-view-container {
   font-family: "Poiret One", sans-serif;
@@ -7,10 +8,12 @@
 
 .button-register {
   background-color: #87556f;
+  border: none;
 }
 
 .button-register:hover {
   background-color: #59405c;
+  border: none;
 }
 .form-container {
   display: flex;
@@ -35,10 +38,13 @@
 
 .button-login {
   background-color: #87556f;
+  border: none;
 }
 
-.button-login:hover {
+.button-login:hover,
+.button-login:focus {
   background-color: #59405c;
+  border: none;
 }
 .movie-card-container {
   font-family: "Poiret One", sans-serif;
@@ -58,10 +64,13 @@
 .button-open {
   background-color: #87556f;
   font-size: 25px;
+  border: none;
 }
 
-.button-open:hover {
+.button-open:hover,
+.button-open:focus {
   background-color: #59405c;
+  border: none;
 }
 .movie-title {
   text-align: center;
@@ -87,19 +96,28 @@
 }
 
 .movie-poster {
-  margin: auto;
+  max-width: 100%;
+  height: auto;
   display: block;
   border-radius: 10px;
   margin-bottom: 10px;
+}
+@media (min-width: 768px) {
+  .movie-poster {
+    margin: auto;
+  }
 }
 
 .button-goBack {
   background-color: #87556f;
   margin: 20px auto 20px auto;
+  border: none;
 }
 
-.button-goBack:hover {
+.button-goBack:hover,
+.button-goBack:focus {
   background-color: #59405c;
+  border: none;
 }
 .fave-Flix {
   color: steelblue;
