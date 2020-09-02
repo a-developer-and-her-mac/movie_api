@@ -4,16 +4,28 @@
 .registration-view-container {
   font-family: "Poiret One", sans-serif;
 }
-.button-login {
-  background-color: #4b5d67;
+
+.button-register {
+  background-color: #87556f;
 }
 
+.button-register:hover {
+  background-color: #59405c;
+}
 .form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
   font-family: "Poiret One", sans-serif;
   margin-top: 20px;
   text-align: center;
-  margin-left: 22%;
-  margin-top: 15%;
+}
+
+@media (min-width: 768px) {
+  .Col {
+    width: 50vw;
+  }
 }
 
 .username-label,
@@ -40,6 +52,7 @@
 
 .Card-Title {
   font-weight: bold;
+  text-decoration: underline;
 }
 
 .button-open {
@@ -50,10 +63,22 @@
 .button-open:hover {
   background-color: #59405c;
 }
+.movie-title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 32px;
+  text-decoration: underline;
+}
+
 .movie-description,
 .movie-genre,
 .movie-director {
   font-size: 20px;
+}
+
+.movie-description {
+  margin-right: 20px;
+  margin-left: 20px;
 }
 
 .movie-view-container {
@@ -64,12 +89,13 @@
 .movie-poster {
   margin: auto;
   display: block;
-  border-radius: round;
+  border-radius: 10px;
   margin-bottom: 10px;
 }
 
 .button-goBack {
   background-color: #87556f;
+  margin: 20px auto 20px auto;
 }
 
 .button-goBack:hover {

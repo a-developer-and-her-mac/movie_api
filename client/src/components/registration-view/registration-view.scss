@@ -1,3 +1,17 @@
+$first-color: #87556f;
+$second-color: #59405c;
+$font-stack: "Poiret One",
+sans-serif;
+
+
 .registration-view-container {
-  font-family: "Poiret One", sans-serif;
+  font-family: $font-stack;
+}
+
+.button-register {
+  background-color: $first-color;
+}
+
+.button-register:hover {
+  background-color: $second-color;
 }

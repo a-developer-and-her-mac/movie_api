@@ -32663,8 +32663,7 @@ function RegistrationView(props) {
   }), _react.default.createElement(_Form.default.Text, {
     className: "text-muted"
   }, "We'll never share your email with anyone else.")), _react.default.createElement(_Button.default, {
-    className: "button",
-    variant: "primary",
+    className: "button-register",
     type: "submit"
   }, "Register")));
 }
@@ -32753,10 +32752,9 @@ function LoginView(props) {
   return _react.default.createElement(_Container.default, {
     className: "form-container"
   }, _react.default.createElement(_Row.default, null, _react.default.createElement(_Col.default, {
-    xs: 1,
-    sm: 3,
-    md: 5,
-    lg: 8
+    xs: 12,
+    sm: 12,
+    className: "Col"
   }, _react.default.createElement(_Form.default, null, _react.default.createElement(_Form.default.Group, {
     controlId: "formBasicUsername"
   }, _react.default.createElement(_Form.default.Label, {
@@ -33160,31 +33158,30 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
         className: "movie-poster",
         src: movie.ImagePath
       }), _react.default.createElement("div", {
-        className: "movie-title text-center h2 font-weight-bold"
+        className: "movie-title"
       }, _react.default.createElement("span", {
-        className: "label font-italic"
+        className: "label"
       }, "Title: "), _react.default.createElement("span", {
         className: "value"
       }, movie.Title)), _react.default.createElement("div", {
-        className: "movie-description text-justify"
+        className: "movie-description"
       }, _react.default.createElement("span", {
-        className: "label font-italic"
+        className: "label"
       }, "Description: "), _react.default.createElement("span", {
         className: "value"
       }, " ", movie.Description)), _react.default.createElement("div", {
-        className: "movie-genre  text-justify"
+        className: "movie-genre"
       }, _react.default.createElement("span", {
-        className: "label font-italic"
+        className: "label"
       }, " Genre: "), _react.default.createElement("span", {
         className: "value"
       }, movie.Genre.Name)), _react.default.createElement("div", {
-        className: "movie-director text-justify"
+        className: "movie-director"
       }, _react.default.createElement("span", {
-        className: "label font-italic"
+        className: "label"
       }, "Director: "), _react.default.createElement("span", {
         className: "value"
       }, movie.Director.Name)), _react.default.createElement(_Button.default, {
-        type: "button",
         className: " button-goBack",
         onClick: this.goBack
       }, "Go Back")))));
@@ -33461,7 +33458,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59941" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61391" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

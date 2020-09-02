@@ -33,7 +33,7 @@ export function RegistrationView(props) {
             We'll never share your email with anyone else.
     </Form.Text>
         </Form.Group>
-        <Button className="button" variant="primary" type="submit">
+        <Button className="button-register" type="submit">
           Register
   </Button>
       </Form>

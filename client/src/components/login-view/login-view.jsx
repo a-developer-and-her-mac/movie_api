@@ -29,7 +29,7 @@ export function LoginView(props) {
   return (
     <Container className="form-container">
       <Row>
-        <Col xs={1} sm={3} md={5} lg={8}>
+        <Col xs={12} sm={12} className="Col">
           <Form>
             <Form.Group controlId="formBasicUsername">
               <Form.Label className="username-label">Username</Form.Label>

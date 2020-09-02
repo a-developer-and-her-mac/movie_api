@@ -30,24 +30,24 @@ export class MovieView extends React.Component {
           <Col>
             <div className="movie-view">
               <img className="movie-poster" src={movie.ImagePath} />
-              <div className="movie-title text-center h2 font-weight-bold">
-                <span className="label font-italic">Title: </span>
+              <div className="movie-title">
+                <span className="label">Title: </span>
                 <span className="value">{movie.Title}</span>
               </div>
-              <div className="movie-description text-justify">
-                <span className="label font-italic">Description: </span>
+              <div className="movie-description">
+                <span className="label">Description: </span>
                 <span className="value"> {movie.Description}</span>
               </div>
 
-              <div className="movie-genre  text-justify">
-                <span className="label font-italic"> Genre: </span>
+              <div className="movie-genre">
+                <span className="label"> Genre: </span>
                 <span className="value">{movie.Genre.Name}</span>
               </div>
-              <div className="movie-director text-justify">
-                <span className="label font-italic">Director: </span>
+              <div className="movie-director">
+                <span className="label">Director: </span>
                 <span className="value">{movie.Director.Name}</span>
               </div>
-              <Button type="button" className=" button-goBack" onClick={this.goBack}>Go Back</Button>
+              <Button className=" button-goBack" onClick={this.goBack}>Go Back</Button>
             </div>
           </Col>
         </Row>

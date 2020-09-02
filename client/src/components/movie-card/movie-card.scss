@@ -1,5 +1,10 @@
+$first-color: #87556f;
+$second-color: #59405c;
+$font-stack: "Poiret One",
+sans-serif;
+
 .movie-card-container {
-  font-family: "Poiret One", sans-serif;
+  font-family: $font-stack;
   text-align: center;
 }
 
@@ -10,14 +15,14 @@
 
 .Card-Title {
   font-weight: bold;
+  text-decoration: underline;
 }
 
 .button-open {
-  background-color: #87556f;
+  background-color: $first-color;
   font-size: 25px;
-
 }
 
 .button-open:hover {
-  background-color: #59405c;
+  background-color: $second-color;
 }
