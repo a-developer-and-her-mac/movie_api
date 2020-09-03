@@ -36,13 +36,24 @@
   font-size: 20px;
 }
 
-.button-login {
+.button-login,
+.button-link-to-register {
   background-color: #87556f;
   border: none;
+  margin: 10px;
+  width: 20%;
+}
+@media (max-width: 576px) {
+  .button-login,
+.button-link-to-register {
+    width: 40%;
+  }
 }
 
 .button-login:hover,
-.button-login:focus {
+.button-link-to-register:hover,
+.button-login:focus,
+.button-link-to-register:focus {
   background-color: #59405c;
   border: none;
 }
@@ -63,7 +74,7 @@
 
 .button-open {
   background-color: #87556f;
-  font-size: 25px;
+  font-size: 15px;
   border: none;
 }
 

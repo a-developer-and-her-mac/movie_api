@@ -32638,6 +32638,16 @@ require("./registration-view.scss");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function RegistrationView(props) {
+  var handleSubmit = function handleSubmit(e) {
+    e.preventDefault();
+    console.log(username, password);
+    /* Send a request to the server for authentication */
+
+    /* Then call props..onLoggedIn(username) */
+
+    props.onLoggedIn(username);
+  };
+
   return _react.default.createElement(_Container.default, {
     className: "registration-view-container"
   }, _react.default.createElement(_Form.default, null, _react.default.createElement(_Form.default.Group, {
@@ -32664,7 +32674,8 @@ function RegistrationView(props) {
     className: "text-muted"
   }, "We'll never share your email with anyone else.")), _react.default.createElement(_Button.default, {
     className: "button-register",
-    type: "submit"
+    type: "submit",
+    onClick: handleSubmit
   }, "Register")));
 }
 
@@ -32745,10 +32756,6 @@ function LoginView(props) {
     props.onLoggedIn(username);
   };
 
-  var handleRegister = function handleRegister(e) {
-    e.preventDefault();
-  };
-
   return _react.default.createElement(_Container.default, {
     className: "form-container"
   }, _react.default.createElement(_Row.default, null, _react.default.createElement(_Col.default, {
@@ -32781,7 +32788,23 @@ function LoginView(props) {
     className: "button-login",
     type: "button",
     onClick: handleSubmit
-  }, "Login")))));
+  }, "Login"), _react.default.createElement(_Button.default, {
+    className: "button-link-to-register",
+    type: "button",
+    onClick: function (_onClick) {
+      function onClick() {
+        return _onClick.apply(this, arguments);
+      }
+
+      onClick.toString = function () {
+        return _onClick.toString();
+      };
+
+      return onClick;
+    }(function () {
+      return onClick();
+    })
+  }, "Register")))));
 }
 
 LoginView.propTypes = {
@@ -33458,7 +33481,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65205" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51751" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

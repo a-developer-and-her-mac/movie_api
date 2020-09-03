@@ -21,10 +21,7 @@ export function LoginView(props) {
     props.onLoggedIn(username);
   };
 
-  const handleRegister = (e) => {
-    e.preventDefault();
 
-  }
 
   return (
     <Container className="form-container">
@@ -44,6 +41,11 @@ export function LoginView(props) {
             <Button className="button-login" type="button" onClick={handleSubmit}>
               Login
         </Button>
+            <Button className="button-link-to-register" type="button" onClick={() => onClick(
+              // Not sure what to put here?
+            )}>
+              Register
+              </Button>
           </Form>
         </Col>
       </Row>

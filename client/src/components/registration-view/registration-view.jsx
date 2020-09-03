@@ -9,6 +9,14 @@ import "./registration-view.scss";
 
 export function RegistrationView(props) {
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(username, password);
+    /* Send a request to the server for authentication */
+    /* Then call props..onLoggedIn(username) */
+    props.onLoggedIn(username);
+  };
+
   return (
     <Container className="registration-view-container">
       <Form>
@@ -33,7 +41,7 @@ export function RegistrationView(props) {
             We'll never share your email with anyone else.
     </Form.Text>
         </Form.Group>
-        <Button className="button-register" type="submit">
+        <Button className="button-register" type="submit" onClick={handleSubmit}>
           Register
   </Button>
       </Form>
