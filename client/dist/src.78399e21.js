@@ -32711,7 +32711,7 @@ RegistrationView.propTypes = {
     Username: _propTypes.default.string.isRequired,
     Password: _propTypes.default.string.isRequired,
     Email: _propTypes.default.string.isRequired
-  }).isRequired
+  })
 };
 },{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","./registration-view.scss":"components/registration-view/registration-view.scss"}],"components/login-view/login-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
@@ -32773,6 +32773,11 @@ function LoginView(props) {
       password = _useState4[0],
       setPassword = _useState4[1];
 
+  var _useState5 = (0, _react.useState)(false),
+      _useState6 = _slicedToArray(_useState5, 2),
+      register = _useState6[0],
+      setRegister = _useState6[1];
+
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
     console.log(username, password);
@@ -32781,6 +32786,11 @@ function LoginView(props) {
     /* Then call props..onLoggedIn(username) */
 
     props.onLoggedIn(username);
+  };
+
+  var handleClick = function handleClick() {
+    setRegister(true);
+    if (register === true) return _react.default.createElement(_registrationView.RegistrationView, null);
   };
 
   return _react.default.createElement(_Container.default, {
@@ -32818,19 +32828,7 @@ function LoginView(props) {
   }, "Login"), _react.default.createElement(_Button.default, {
     className: "button-link-to-register",
     type: "button",
-    onClick: function (_onClick) {
-      function onClick() {
-        return _onClick.apply(this, arguments);
-      }
-
-      onClick.toString = function () {
-        return _onClick.toString();
-      };
-
-      return onClick;
-    }(function () {
-      return onClick();
-    })
+    onClick: handleClick
   }, "Register")))));
 }
 
@@ -33508,7 +33506,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55100" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56100" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
