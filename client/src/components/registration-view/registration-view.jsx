@@ -9,6 +9,11 @@ import "./registration-view.scss";
 
 export function RegistrationView(props) {
 
+  const [username, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(username, password);
