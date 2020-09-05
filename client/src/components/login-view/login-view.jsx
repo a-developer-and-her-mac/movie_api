@@ -12,7 +12,6 @@ import { RegistrationView } from "../registration-view/registration-view";
 export function LoginView(props) {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  let [register, setRegister] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,10 +21,6 @@ export function LoginView(props) {
     props.onLoggedIn(username);
   };
 
-  const handleClick = () => {
-    setRegister(true);
-    if (register === true) return <RegistrationView />;
-  }
 
 
   return (
@@ -46,9 +41,12 @@ export function LoginView(props) {
             <Button className="button-login" type="button" onClick={handleSubmit}>
               Login
         </Button>
-            <Button className="button-link-to-register" type="button" onClick={handleClick}>
-              Register
-              </Button>
+            <p>Not registered? Click {' '}
+              <span className="span-login" type="text" onClick={() => props.newUser()}>
+                here
+  </span>{' '}
+  to register
+  </p>
           </Form>
         </Col>
       </Row>

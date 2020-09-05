@@ -2,19 +2,10 @@
   font-family: "Poiret One", sans-serif;
   display: flex;
 }
-.registration-view-container {
-  font-family: "Poiret One", sans-serif;
+.span-login {
+  text-decoration: underline;
 }
 
-.button-register {
-  background-color: #87556f;
-  border: none;
-}
-
-.button-register:hover {
-  background-color: #59405c;
-  border: none;
-}
 .form-container {
   display: flex;
   justify-content: center;
@@ -36,24 +27,56 @@
   font-size: 20px;
 }
 
-.button-login,
-.button-link-to-register {
+.button-login {
   background-color: #87556f;
   border: none;
   margin: 10px;
   width: 20%;
 }
 @media (max-width: 576px) {
-  .button-login,
-.button-link-to-register {
+  .button-login {
     width: 40%;
   }
 }
 
 .button-login:hover,
-.button-link-to-register:hover,
-.button-login:focus,
-.button-link-to-register:focus {
+.button-login:focus {
+  background-color: #59405c;
+  border: none;
+}
+.span-register {
+  text-decoration: underline;
+}
+
+.registration-view-container {
+  font-family: "Poiret One", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: "Poiret One", sans-serif;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.username-label,
+.password-label,
+.email-label {
+  font-size: 20px;
+}
+
+.text-muted {
+  font-size: 15px;
+}
+
+.button-register {
+  background-color: #87556f;
+  border: none;
+  margin-bottom: 10px;
+  width: 20%;
+}
+
+.button-register:hover {
   background-color: #59405c;
   border: none;
 }

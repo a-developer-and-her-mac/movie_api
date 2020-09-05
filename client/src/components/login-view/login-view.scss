@@ -15,6 +15,10 @@ sans-serif;
   }
 }
 
+.span-login {
+  text-decoration: underline;
+}
+
 
 .form-container {
   display: flex;
@@ -40,8 +44,7 @@ sans-serif;
   font-size: 20px;
 }
 
-.button-login,
-.button-link-to-register {
+.button-login {
   background-color: $first-color;
   border: none;
   margin: 10px;
@@ -53,9 +56,7 @@ sans-serif;
 }
 
 .button-login:hover,
-.button-link-to-register:hover,
-.button-login:focus,
-.button-link-to-register:focus {
+.button-login:focus {
   background-color: $second-color;
   border: none;
 }

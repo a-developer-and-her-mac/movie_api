@@ -4,13 +4,37 @@ $font-stack: "Poiret One",
 sans-serif;
 
 
+.span-register {
+  text-decoration: underline;
+}
+
 .registration-view-container {
   font-family: $font-stack;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: $font-stack;
+  margin-top: 20px;
+  text-align: center;
+
+}
+
+.username-label,
+.password-label,
+.email-label {
+  font-size: 20px;
+}
+
+.text-muted {
+  font-size: 15px;
 }
 
 .button-register {
   background-color: $first-color;
   border: none;
+  margin-bottom: 10px;
+  width: 20%;
 }
 
 .button-register:hover {

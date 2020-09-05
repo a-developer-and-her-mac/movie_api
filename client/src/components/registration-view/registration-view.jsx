@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
-
+import { LoginView } from "../login-view/login-view";
 import "./registration-view.scss";
 
 export function RegistrationView(props) {
@@ -12,7 +14,6 @@ export function RegistrationView(props) {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,32 +25,42 @@ export function RegistrationView(props) {
 
   return (
     <Container className="registration-view-container">
-      <Form>
+      <Row>
+        <Col xs={12} sm={12} className="Col">
+          <Form>
 
-        <Form.Group controlId="formBasicUsername">
-          <Form.Label>Username</Form.Label>
-          <Form.Control type="text" placeholder="Enter username" />
-        </Form.Group>
+            <Form.Group controlId="formBasicUsername">
+              <Form.Label className="username-label">Username</Form.Label>
+              <Form.Control type="text" placeholder="Enter username" value={username} onChange={e => setUserName(e.target.value)} />
+            </Form.Group>
 
-        <Form.Group controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Password" />
-        </Form.Group>
-        <Form.Group controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
-        </Form.Group>
+            <Form.Group controlId="formBasicPassword">
+              <Form.Label className="password-label">Password</Form.Label>
+              <Form.Control type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
+            </Form.Group>
 
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" />
-          <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
+            <Form.Group controlId="formBasicEmail">
+              <Form.Label className="email-label">Email address</Form.Label>
+              <Form.Control type="email" placeholder="Enter email" value={email} onChange={e => setEmail(e.target.value)} />
+              <Form.Text className="text-muted">
+                We'll never share your email with anyone else.
     </Form.Text>
-        </Form.Group>
-        <Button className="button-register" type="submit" onClick={handleSubmit}>
-          Register
+            </Form.Group>
+            <Form.Group controlId="formBasicCheckbox">
+              <Form.Check type="checkbox" label="Check me out" />
+            </Form.Group>
+            <Button className="button-register" type="submit" onClick={handleSubmit}>
+              Register
   </Button>
-      </Form>
+            <p> Already registered? Click {' '}
+              <span className="span-register" type="text" onClick={() => props.userRegistered()}>
+                here
+  </span>{' '}
+  to login.
+        </p>
+          </Form>
+        </Col>
+      </Row>
     </Container>
   );
 }
