@@ -7,7 +7,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 
 
-
+import { Link } from "react-router-dom";
 
 import "./movie-card.scss";
 
@@ -25,7 +25,9 @@ export class MovieCard extends React.Component {
               <Card.Body>
                 <Card.Title className="Card-Title">{movie.Title}</Card.Title>
                 <Card.Text className="Card-Text">{movie.Description}</Card.Text>
-                <Button className="button-open" onClick={() => onClick(movie)}>Open</Button>
+                <Link to={`/movies/${movie._id}`}>
+                  <Button className="button-open">Open</Button>
+                </Link>
               </Card.Body>
             </Card>
           </Col>
@@ -41,5 +43,4 @@ MovieCard.propTypes = {
     Description: PropTypes.string.isRequired,
     ImagePath: PropTypes.string.isRequired
   }).isRequired,
-  onClick: PropTypes.func.isRequired
 };

@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import Button from "react-bootstrap/Button";
 
 import "./main-view.scss";
 
@@ -11,6 +12,7 @@ import { RegistrationView } from "../registration-view/registration-view";
 import { LoginView } from "../login-view/login-view";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 export class MainView extends React.Component {
 
@@ -26,8 +28,21 @@ export class MainView extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('https://faveflix-api.herokuapp.com/movies')
+    let accessToken = localStorage.getItem('token');
+    if (accessToken !== null) {
+      this.setState({
+        user: localStorage.getItem('user')
+      });
+      this.getMovies(accessToken);
+    }
+  }
+
+  getMovies(token) {
+    axios.get('https://faveflix-api.herokuapp.com/movies', {
+      headers: { Authorization: `Bearer ${token}` }
+    })
       .then(response => {
+        // Assign the result to the state
         this.setState({
           movies: response.data
         });
@@ -37,7 +52,6 @@ export class MainView extends React.Component {
       });
   }
 
-
   onMovieClick(movie) {
     this.setState({
       selectedMovie: movie
@@ -45,10 +59,15 @@ export class MainView extends React.Component {
   }
 
 
-  onLoggedIn(user) {
+  onLoggedIn(authData) {
+    console.log(authData);
     this.setState({
-      user,
+      user: authData.user.Username
     });
+
+    localStorage.setItem("token", authData.token);
+    localStorage.setItem("user", authData.user.Username);
+    this.getMovies(authData.token);
   }
 
   registerUser() {
@@ -62,6 +81,13 @@ export class MainView extends React.Component {
       newUser: null,
     })
   }
+
+  logOutHandler() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+  }
+
+
 
   render() {
 
@@ -88,23 +114,25 @@ export class MainView extends React.Component {
 
     return (
 
-      <div className="main-view">
-        <Container className="main-view-container">
-          <Row>
+      <Router>
+        <div className="main-view">
+          <Container className="main-view-container">
+            <Row>
+              <Route exact path="/" render={() => movies.map(m =>
+                <MovieCard key={m._id} movie={m} />)} />
 
-            {selectedMovie
-              ? <MovieView movie={selectedMovie} />
-              : movies.map(movie => (
-                <Col key={movie._id} xs={8} sm={8} md={6} lg={4}>
-                  <MovieCard key={movie._id} movie={movie} onClick={movie => this.onMovieClick(movie)} />
-                </Col>
-              ))
-            }
-          </Row>
+              <Route path="/movies/:movieId" render={({ match }) =>
+                <MovieView movie={movies.find(m => m._id === match.params.movieId)} />} />
 
-        </Container>
-
-      </div>
+              <Route path="/directors/:name" render={({ match }) => {
+                if (!movies) return <div className="main-view" />;
+                return <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director} />
+              }
+              } />
+            </Row>
+          </Container>
+        </div>
+      </Router >
     );
   }
 }
