@@ -6,6 +6,7 @@ import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 import "./login-view.scss";
 import { RegistrationView } from "../registration-view/registration-view";

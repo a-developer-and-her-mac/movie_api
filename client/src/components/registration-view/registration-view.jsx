@@ -8,6 +8,7 @@ import Col from "react-bootstrap/Col";
 
 import { LoginView } from "../login-view/login-view";
 import "./registration-view.scss";
+import Axios from "axios";
 
 export function RegistrationView(props) {
 
@@ -15,12 +16,22 @@ export function RegistrationView(props) {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleRegister = (e) => {
     e.preventDefault();
-    console.log(username, password);
-    /* Send a request to the server for authentication */
-    /* Then call props..onLoggedIn(username) */
-    props.onLoggedIn(username);
+    axios.post("https://faveflix-api.herokuapp.com/users", {
+      Username: username,
+      Password: password,
+      Email: email,
+      Birthday: birthday
+    })
+      .then(response => {
+        const data = response.data;
+        console.log(data);
+        window.open("/", "_self");
+      })
+      .catch(e => {
+        console.log("error registering the user")
+      });
   };
 
   return (
@@ -49,7 +60,7 @@ export function RegistrationView(props) {
             <Form.Group controlId="formBasicCheckbox">
               <Form.Check type="checkbox" label="Check me out" />
             </Form.Group>
-            <Button className="button-register" type="submit" onClick={handleSubmit}>
+            <Button className="button-register" type="submit" onClick={handleRegister}>
               Register
   </Button>
             <p> Already registered? Click {' '}
