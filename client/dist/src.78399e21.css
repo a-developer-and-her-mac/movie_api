@@ -2,6 +2,9 @@
   font-family: "Poiret One", sans-serif;
   display: flex;
 }
+.director-container {
+  font-family: "Poiret One", sans-serif;
+}
 .span-login {
   text-decoration: underline;
   color: black;
@@ -153,14 +156,20 @@
   }
 }
 
-.button-goBack {
+.button-goBack,
+.button-director,
+.button-genre {
   background-color: #87556f;
-  margin: 20px auto 20px auto;
+  margin: 20px 10px 20px 10px;
   border: none;
 }
 
 .button-goBack:hover,
-.button-goBack:focus {
+.button-director:hover,
+.button-genre:hover,
+.button-goBack:focus,
+.button-director:focus,
+.button-genre:focus {
   background-color: #59405c;
   border: none;
 }

@@ -46,8 +46,18 @@ export class MovieView extends React.Component {
                 <span className="label">Director: </span>
                 <span className="value">{movie.Director.Name}</span>
               </div>
+              <Link to={`/directors/${movie.Director.Name}`}>
+                <Button className="button-director" >
+                  Director
+                </Button>
+              </Link>
               <Link to={`/`}>
                 <Button className=" button-goBack">Back</Button>
+              </Link>
+              <Link to={`/genres/${movie.Genre.Name}`}>
+                <Button className="button-genre">
+                  Genre
+                </Button>
               </Link>
             </div>
           </Col>
@@ -72,5 +82,5 @@ MovieView.propTypes = {
       Death: PropTypes.date
     }),
     ImagePath: PropTypes.string.isRequired
-  }).isRequired
+  })
 }

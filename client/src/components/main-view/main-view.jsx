@@ -8,6 +8,8 @@ import Button from "react-bootstrap/Button";
 
 import "./main-view.scss";
 
+import { GenreView } from "../genre-view/genre-view";
+import { DirectorView } from "../director-view/director-view";
 import { RegistrationView } from "../registration-view/registration-view";
 import { LoginView } from "../login-view/login-view";
 import { MovieCard } from "../movie-card/movie-card";
@@ -23,7 +25,7 @@ export class MainView extends React.Component {
       movies: [],
       selectedMovie: null,
       user: null,
-      newUser: null
+      newUser: null,
     };
   }
 
@@ -118,6 +120,7 @@ export class MainView extends React.Component {
                 return <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director} />
               }
               } />
+
 
               <Route path="/genres/:name" render={({ match }) =>
                 <GenreView genre={movies.find(m => m.Genre.Name === match.params.name).Genre} />} />

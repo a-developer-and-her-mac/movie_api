@@ -44,14 +44,20 @@ sans-serif;
   }
 }
 
-.button-goBack {
+.button-goBack,
+.button-director,
+.button-genre {
   background-color: $first-color;
-  margin: 20px auto 20px auto;
+  margin: 20px 10px 20px 10px;
   border: none;
 }
 
 .button-goBack:hover,
-.button-goBack:focus {
+.button-director:hover,
+.button-genre:hover,
+.button-goBack:focus,
+.button-director:focus,
+.button-genre:focus {
   background-color: $second-color;
   border: none;
 }
