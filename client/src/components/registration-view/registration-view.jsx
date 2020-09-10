@@ -5,16 +5,18 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Axios from "axios";
 
+import { Link } from "react-router-dom";
 import { LoginView } from "../login-view/login-view";
 import "./registration-view.scss";
-import Axios from "axios";
 
 export function RegistrationView(props) {
 
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [birthdate, setBirthdate] = useState("");
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -57,6 +59,12 @@ export function RegistrationView(props) {
                 We'll never share your email with anyone else.
     </Form.Text>
             </Form.Group>
+
+            <Form.Group controlId="formBasicBirthdate">
+              <Form.Label className="birthdate-label">Birthdate</Form.Label>
+              <Form.Control type="date" placeholder="Birthdate" value={birthdate} onChange={e => setBirthdate(e.target.value)} />
+            </Form.Group>
+
             <Form.Group controlId="formBasicCheckbox">
               <Form.Check type="checkbox" label="Check me out" />
             </Form.Group>
@@ -64,9 +72,11 @@ export function RegistrationView(props) {
               Register
   </Button>
             <p> Already registered? Click {' '}
-              <span className="span-register" type="text" onClick={() => props.userRegistered()}>
-                here
+              <Link to={`/login`}>
+                <span className="span-register" type="text">
+                  here
   </span>{' '}
+              </Link>
   to login.
         </p>
           </Form>

@@ -94,22 +94,6 @@ export class MainView extends React.Component {
     const { movies, selectedMovie, user, newUser } = this.state;
 
 
-    if (!user) {
-      if (newUser) return (
-        <RegistrationView
-          userRegistered={() => this.userRegistered()}
-          onLoggedIn={user => this.onLoggedIn(user)}
-        />
-      );
-
-      else return (
-        <LoginView
-          onLoggedIn={user => this.onLoggedIn(user)}
-          newUser={() => this.registerUser()}
-        />
-      );
-    }
-
 
     if (!movies) return <div className="main-view" />;
 
@@ -140,6 +124,8 @@ export class MainView extends React.Component {
 
 
               <Route path="/register" render={() => <RegistrationView />} />
+
+              <Route path="/login" render={() => <LoginView />} />
 
             </Row>
           </Container>

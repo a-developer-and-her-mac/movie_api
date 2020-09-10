@@ -6,6 +6,11 @@ sans-serif;
 
 .span-register {
   text-decoration: underline;
+  color: black;
+}
+
+.span-register:hover {
+  color: $second-color;
 }
 
 .registration-view-container {
@@ -22,7 +27,8 @@ sans-serif;
 
 .username-label,
 .password-label,
-.email-label {
+.email-label,
+.birthdate-label {
   font-size: 20px;
 }
 

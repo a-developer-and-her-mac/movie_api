@@ -17,6 +17,11 @@ sans-serif;
 
 .span-login {
   text-decoration: underline;
+  color: black;
+}
+
+.span-login:hover {
+  color: $second-color;
 }
 
 

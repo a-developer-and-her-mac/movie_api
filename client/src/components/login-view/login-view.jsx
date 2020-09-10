@@ -52,12 +52,15 @@ export function LoginView(props) {
             <Button className="button-login" type="button" onClick={handleSubmit}>
               Login
         </Button>
+
             <p>Not registered? Click {' '}
-              <span className="span-login" type="text" onClick={() => props.newUser()}>
-                here
-  </span>{' '}
-  to register
-  </p>
+              <Link to={`/register`}>
+                <span className="span-login" type="text">
+                  here
+                </span> {' '}
+              </Link>
+              to register
+          </p>
           </Form>
         </Col>
       </Row>

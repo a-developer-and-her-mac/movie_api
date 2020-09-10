@@ -4,6 +4,11 @@
 }
 .span-login {
   text-decoration: underline;
+  color: black;
+}
+
+.span-login:hover {
+  color: #59405c;
 }
 
 .form-container {
@@ -46,6 +51,11 @@
 }
 .span-register {
   text-decoration: underline;
+  color: black;
+}
+
+.span-register:hover {
+  color: #59405c;
 }
 
 .registration-view-container {
@@ -61,7 +71,8 @@
 
 .username-label,
 .password-label,
-.email-label {
+.email-label,
+.birthdate-label {
   font-size: 20px;
 }
 
