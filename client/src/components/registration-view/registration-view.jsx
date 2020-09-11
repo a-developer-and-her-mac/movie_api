@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Axios from "axios";
+import axios from "axios";
 
 import { Link } from "react-router-dom";
 import { LoginView } from "../login-view/login-view";
@@ -24,7 +24,7 @@ export function RegistrationView(props) {
       Username: username,
       Password: password,
       Email: email,
-      Birthday: birthday
+      Birthdate: birthdate
     })
       .then(response => {
         const data = response.data;
@@ -90,6 +90,7 @@ RegistrationView.propTypes = {
   user: PropTypes.shape({
     Username: PropTypes.string.isRequired,
     Password: PropTypes.string.isRequired,
-    Email: PropTypes.string.isRequired
+    Email: PropTypes.string.isRequired,
+    Birthdate: PropTypes.date
   })
 };

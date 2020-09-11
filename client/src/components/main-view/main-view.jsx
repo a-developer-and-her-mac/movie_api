@@ -8,6 +8,7 @@ import Button from "react-bootstrap/Button";
 
 import "./main-view.scss";
 
+import { ProfileView } from "../profile-view/profile-view";
 import { GenreView } from "../genre-view/genre-view";
 import { DirectorView } from "../director-view/director-view";
 import { RegistrationView } from "../registration-view/registration-view";
@@ -15,6 +16,7 @@ import { LoginView } from "../login-view/login-view";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export class MainView extends React.Component {
 
@@ -25,7 +27,7 @@ export class MainView extends React.Component {
       movies: [],
       selectedMovie: null,
       user: null,
-      newUser: null,
+      newUser: null
     };
   }
 
@@ -105,10 +107,14 @@ export class MainView extends React.Component {
         <div className="main-view">
           <Container className="main-view-container">
             <Row>
-
               <Route exact path="/" render={() => {
                 if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
-                return movies.map(m => <MovieCard key={m._id} movie={m} />)
+                return movies.map(m => (
+                  <Col key={m._id} xs={8} sm={8} md={6} lg={4}>
+                    <MovieCard key={m._id} movie={m} />
+                  </Col>
+                )
+                )
               }
               } />
 
@@ -130,6 +136,13 @@ export class MainView extends React.Component {
 
               <Route path="/login" render={() => <LoginView />} />
 
+              <Route path="/users" render={() => <ProfileView />} />
+
+              <Link to={`/users`}>
+                <Button variant="link" className="button-profile">
+                  {user}
+                </Button>
+              </Link>
             </Row>
           </Container>
         </div>
