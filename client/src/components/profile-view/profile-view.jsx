@@ -15,6 +15,7 @@ export function ProfileView(props) {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [birthdate, setBirthdate] = useState("");
+  const [favMovies, setFavMovies] = useState([]);
 
 
   const handleUpdate = (e) => {
@@ -23,7 +24,8 @@ export function ProfileView(props) {
       Username: username,
       Password: password,
       Email: email,
-      Birthdate: birthdate
+      Birthdate: birthdate,
+      favMovies: favMovies
     })
       .then(response => {
         const data = response.data;
@@ -52,12 +54,15 @@ export function ProfileView(props) {
 
 
   return (
-    <Container className="profile-container">
-      <Row>
-        <Col>
-        </Col>
-      </Row>
-    </Container>
+    <div className="profile-view">
+      <Container>
+        <Row>
+          <Col>
+
+          </Col>
+        </Row>
+      </Container>
+    </div>
   )
 }
 

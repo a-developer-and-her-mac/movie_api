@@ -14,7 +14,9 @@ export class MovieView extends React.Component {
   constructor() {
     super();
 
-    this.state = {};
+    this.state = {
+      movies: []
+    };
   }
 
 
@@ -46,7 +48,7 @@ export class MovieView extends React.Component {
                 <span className="label">Director: </span>
                 <span className="value">{movie.Director.Name}</span>
               </div>
-              <Link to={`/directors/${movie.Director.Name}`}>
+              <Link to={`/Directors/${movie.Director.Name}`}>
                 <Button className="button-director" >
                   Director
                 </Button>

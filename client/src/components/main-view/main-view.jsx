@@ -27,7 +27,7 @@ export class MainView extends React.Component {
       movies: [],
       selectedMovie: null,
       user: null,
-      newUser: null
+      newUser: null,
     };
   }
 
@@ -89,6 +89,9 @@ export class MainView extends React.Component {
   logOutHandler() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    this.setState({
+      user: null
+    })
   }
 
 
@@ -121,7 +124,7 @@ export class MainView extends React.Component {
               <Route path="/movies/:movieId" render={({ match }) =>
                 <MovieView movie={movies.find(m => m._id === match.params.movieId)} />} />
 
-              <Route path="/directors/:name" render={({ match }) => {
+              <Route path="/Directors/:Name" render={({ match }) => {
                 if (!movies) return <div className="main-view" />;
                 return <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director} />
               }
@@ -138,11 +141,14 @@ export class MainView extends React.Component {
 
               <Route path="/users" render={() => <ProfileView />} />
 
+              {/*} Fix this
               <Link to={`/users`}>
                 <Button variant="link" className="button-profile">
                   {user}
                 </Button>
               </Link>
+            {*/}
+
             </Row>
           </Container>
         </div>

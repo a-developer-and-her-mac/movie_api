@@ -1,31 +1,50 @@
-import React, { useState } from "react";
+import React from "react";
+import Container from "react-bootstrap/Container";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
+
 import { Link } from "react-router-dom";
 
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+
 
 import "./director-view.scss";
+import { MovieView } from "../movie-view/movie-view";
+import { MainView } from "../main-view/main-view";
 
-export function DirectorView(props) {
+export class DirectorView extends React.Component {
+  constructor() {
+    super();
 
-  return (
-    <Container className="director-container">
-      <Row>
-        <Col>
-          <h2>{movie.Director.Name}</h2>
-          <div className="director-info">
-            <p>
-              {movie.Director.Bio}
-            </p>
-            <p>
-              {movie.Director.Birth}
-            </p>
+    this.state = {
+      movies: [],
+    };
+  }
 
-          </div>
 
-        </Col>
-      </Row>
-    </Container >
-  );
+
+  render() {
+    const { movies, director } = this.props;
+
+    if (!director) return null;
+
+    return (
+      <div className="director-view">
+        <Container className="director-view-container">
+          <Card style={{ width: '25rem' }}>
+            <Card.Body>
+              <Card.Title> {director.Name} </Card.Title>
+              <Card.Text> {director.bio} </Card.Text>
+              <Card.Text> {director.Birth} </Card.Text>
+              <Card.Text> {director.Death} </Card.Text>
+
+              <Link to={`/movies/:movieId`}>
+                <Button>Back</Button>
+              </Link>
+
+            </Card.Body>
+          </Card>
+        </Container>
+      </div>
+    )
+  }
 }

@@ -102,7 +102,7 @@ app.get("/movies/:Title/genre", passport.authenticate('jwt', {
 });
 
 // Get data about a director by name
-app.get("/movies/Director/:Name", passport.authenticate('jwt', {
+app.get("/movies/Directors/:Name", passport.authenticate('jwt', {
   session: false
 }), (req, res) => {
   Movies.findOne({
