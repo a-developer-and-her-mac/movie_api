@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
@@ -7,25 +7,57 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import axios from "axios";
 
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
-export function ProfileView(props) {
-  const [user, setUser] = useState(user);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
-  const [birthdate, setBirthdate] = useState("");
-  const [favMovies, setFavMovies] = useState([]);
+export class ProfileView extends React.Component {
+  constructor(props) {
+    super();
+
+    this.state = {
+      movies: [],
+      user: null,
+      username: null,
+      email: null,
+      birthday: null,
+      favoriteMovies: [],
+    };
+  }
+
+  componentDidMount() {
+    const accessToken = localStorage.getItem("token");
+    this.getUser(accessToken);
+  }
+
+  getUser(token) {
+    const username = localStorage.getItem("user");
+
+    axios.get(`https://faveflix-api.herokuapp.com/users/${username}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then(response => {
+        this.setState({
+          Username: res.data.Username,
+          Password: res.data.Password,
+          Email: res.data.Email,
+          Birthdate: res.data.Birthdate,
+          FavoriteMovies: res.data.FavoriteMovies
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+  }
 
 
-  const handleUpdate = (e) => {
+  handleUpdate = (e) => {
     e.preventDefault();
-    axios.post("https://faveflix-api.herokuapp.com/users/:Username", {
+    axios.put(`https://faveflix-api.herokuapp.com/users/${username}`, {
       Username: username,
       Password: password,
       Email: email,
       Birthdate: birthdate,
-      favMovies: favMovies
+      FavoriteMovies: favoriteMovies
     })
       .then(response => {
         const data = response.data;
@@ -37,9 +69,10 @@ export function ProfileView(props) {
       });
   };
 
-  const handleDeregistration = (e) => {
+
+  handleDeregistration = (e) => {
     e.preventDefault();
-    axios.delete("https://faveflix-api.herokuapp.com/users/:Username", {
+    axios.delete(`https://faveflix-api.herokuapp.com/users/${username}`, {
       Username: username
     })
       .then(response => {
@@ -53,18 +86,29 @@ export function ProfileView(props) {
   }
 
 
-  return (
-    <div className="profile-view">
-      <Container>
-        <Row>
-          <Col>
+  render() {
 
-          </Col>
-        </Row>
-      </Container>
-    </div>
-  )
+    const { movies } = this.props;
+    return (
+      <div className="profile-view">
+        <Container>
+          <Row>
+            <Col>
+              <h1>{this.state.username}</h1>
+              <p>{this.state.username}</p>
+              <p>{this.state.password}</p>
+              <p>{this.state.email}</p>
+              <p>{this.state.birthday}</p>
+              <p>{this.state.favoriteMovies}</p>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+    )
+  }
 }
+
+
 
 
 ProfileView.propTypes = {
@@ -72,6 +116,7 @@ ProfileView.propTypes = {
     Username: PropTypes.string.isRequired,
     Password: PropTypes.string.isRequired,
     Email: PropTypes.string.isRequired,
-    Birthdate: PropTypes.date
+    Birthdate: PropTypes.date,
+    FavoriteMovies: PropTypes.array
   })
 };

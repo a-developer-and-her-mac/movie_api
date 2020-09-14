@@ -139,13 +139,13 @@ export class MainView extends React.Component {
 
               <Route path="/users" render={() => <ProfileView />} />
 
-              {/*} Fix this
+              {/* fix profile link */}
               <Link to={`/users`}>
                 <Button variant="link" className="button-profile">
                   {user}
                 </Button>
               </Link>
-            {*/}
+
 
             </Row>
           </Container>
