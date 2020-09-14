@@ -15,15 +15,13 @@ export class DirectorView extends React.Component {
   constructor() {
     super();
 
-    this.state = {
-      movies: [],
-    };
+    this.state = {};
   }
 
 
 
   render() {
-    const { movies, director } = this.props;
+    const { director } = this.props;
 
     if (!director) return null;
 
@@ -33,11 +31,11 @@ export class DirectorView extends React.Component {
           <Card style={{ width: '25rem' }}>
             <Card.Body>
               <Card.Title> {director.Name} </Card.Title>
-              <Card.Text> {director.bio} </Card.Text>
+              <Card.Text> {director.Bio} </Card.Text>
               <Card.Text> {director.Birth} </Card.Text>
               <Card.Text> {director.Death} </Card.Text>
 
-              <Link to={`/movies/:movieId`}>
+              <Link to={`/`}>
                 <Button>Back</Button>
               </Link>
 

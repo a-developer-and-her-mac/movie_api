@@ -100,8 +100,6 @@ export class MainView extends React.Component {
 
     const { movies, selectedMovie, user, newUser } = this.state;
 
-
-
     if (!movies) return <div className="main-view" />;
 
     return (
@@ -124,7 +122,7 @@ export class MainView extends React.Component {
               <Route path="/movies/:movieId" render={({ match }) =>
                 <MovieView movie={movies.find(m => m._id === match.params.movieId)} />} />
 
-              <Route path="/Directors/:Name" render={({ match }) => {
+              <Route path="/directors/:name" render={({ match }) => {
                 if (!movies) return <div className="main-view" />;
                 return <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director} />
               }
