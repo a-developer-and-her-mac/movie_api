@@ -35742,7 +35742,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         Username: username,
         Password: password,
         Email: email,
-        Birthdate: birthdate,
+        birthday: birthday,
         FavoriteMovies: favoriteMovies
       }).then(function (response) {
         var data = response.data;
@@ -35800,7 +35800,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
           Username: res.data.Username,
           Password: res.data.Password,
           Email: res.data.Email,
-          Birthdate: res.data.Birthdate,
+          Birthday: res.data.Birthday,
           FavoriteMovies: res.data.FavoriteMovies
         });
       }).catch(function (error) {
@@ -35826,7 +35826,7 @@ ProfileView.propTypes = {
     Username: _propTypes.default.string.isRequired,
     Password: _propTypes.default.string.isRequired,
     Email: _propTypes.default.string.isRequired,
-    Birthdate: _propTypes.default.date,
+    Birthday: _propTypes.default.date,
     FavoriteMovies: _propTypes.default.array
   })
 };
@@ -37091,7 +37091,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49267" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54950" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

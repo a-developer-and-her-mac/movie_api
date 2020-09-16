@@ -7,7 +7,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import axios from "axios";
 
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export class ProfileView extends React.Component {
   constructor(props) {
@@ -39,7 +39,7 @@ export class ProfileView extends React.Component {
           Username: res.data.Username,
           Password: res.data.Password,
           Email: res.data.Email,
-          Birthdate: res.data.Birthdate,
+          Birthday: res.data.Birthday,
           FavoriteMovies: res.data.FavoriteMovies
         });
       })
@@ -56,7 +56,7 @@ export class ProfileView extends React.Component {
       Username: username,
       Password: password,
       Email: email,
-      Birthdate: birthdate,
+      birthday: birthday,
       FavoriteMovies: favoriteMovies
     })
       .then(response => {
@@ -116,7 +116,7 @@ ProfileView.propTypes = {
     Username: PropTypes.string.isRequired,
     Password: PropTypes.string.isRequired,
     Email: PropTypes.string.isRequired,
-    Birthdate: PropTypes.date,
+    Birthday: PropTypes.date,
     FavoriteMovies: PropTypes.array
   })
 };
