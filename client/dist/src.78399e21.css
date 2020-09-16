@@ -54,8 +54,33 @@
   background-color: #59405c;
   border: none;
 }
-.director-container {
+.genre-view-container {
   font-family: "Poiret One", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+}
+
+.button-genre {
+  background-color: #87556f;
+  border: none;
+  margin: 10px;
+}
+
+.button-genre:hover,
+.button-genre:focus {
+  background-color: #59405c;
+  border: none;
+}
+.director-view-container {
+  font-family: "Poiret One", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
 }
 
 .button-director {

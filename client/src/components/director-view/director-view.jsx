@@ -31,12 +31,12 @@ export class DirectorView extends React.Component {
           <Card style={{ width: '25rem' }}>
             <Card.Body>
               <Card.Title> {director.Name} </Card.Title>
-              <Card.Text> {director.Bio} </Card.Text>
-              <Card.Text> {director.Birth} </Card.Text>
-              <Card.Text> {director.Death} </Card.Text>
+              <Card.Text> Bio: {director.Bio} </Card.Text>
+              <Card.Text> Birthday: {director.Birth} </Card.Text>
+              <Card.Text> Death: {director.Death} </Card.Text>
 
               <Link to={`/`}>
-                <Button className="director-button">Back</Button>
+                <Button className="button-director">Back</Button>
               </Link>
 
             </Card.Body>

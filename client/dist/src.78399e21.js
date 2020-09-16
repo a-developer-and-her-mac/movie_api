@@ -36243,7 +36243,9 @@ var GenreView = /*#__PURE__*/function (_React$Component) {
         }
       }, _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Card.default.Title, null, " ", genre.Name, " "), _react.default.createElement(_Card.default.Text, null, " ", genre.Description, " "), _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
-      }, _react.default.createElement(_Button.default, null, "Back"))))));
+      }, _react.default.createElement(_Button.default, {
+        className: "button-genre"
+      }, "Back"))))));
     }
   }]);
 
@@ -36332,10 +36334,10 @@ var DirectorView = /*#__PURE__*/function (_React$Component) {
         style: {
           width: '25rem'
         }
-      }, _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Card.default.Title, null, " ", director.Name, " "), _react.default.createElement(_Card.default.Text, null, " ", director.Bio, " "), _react.default.createElement(_Card.default.Text, null, " ", director.Birth, " "), _react.default.createElement(_Card.default.Text, null, " ", director.Death, " "), _react.default.createElement(_reactRouterDom.Link, {
+      }, _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Card.default.Title, null, " ", director.Name, " "), _react.default.createElement(_Card.default.Text, null, " Bio: ", director.Bio, " "), _react.default.createElement(_Card.default.Text, null, " Birthday: ", director.Birth, " "), _react.default.createElement(_Card.default.Text, null, " Death: ", director.Death, " "), _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
       }, _react.default.createElement(_Button.default, {
-        className: "director-button"
+        className: "button-director"
       }, "Back"))))));
     }
   }]);
@@ -37099,7 +37101,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58929" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59700" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

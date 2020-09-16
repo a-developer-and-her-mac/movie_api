@@ -3,8 +3,14 @@ $second-color: #59405c;
 $font-stack: "Poiret One",
 sans-serif;
 
-.director-container {
+.director-view-container {
   font-family: $font-stack;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+
 }
 
 .button-director {

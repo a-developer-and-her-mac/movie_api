@@ -1,0 +1,27 @@
+$first-color : #87556f;
+$second-color: #59405c;
+$font-stack: "Poiret One",
+sans-serif;
+
+.genre-view-container {
+  font-family: $font-stack;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+
+}
+
+
+.button-genre {
+  background-color: $first-color;
+  border: none;
+  margin: 10px;
+}
+
+.button-genre:hover,
+.button-genre:focus {
+  background-color: $second-color;
+  border: none;
+}
