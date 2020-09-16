@@ -35797,11 +35797,11 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         }
       }).then(function (response) {
         _this2.setState({
-          Username: res.data.Username,
-          Password: res.data.Password,
-          Email: res.data.Email,
-          Birthday: res.data.Birthday,
-          FavoriteMovies: res.data.FavoriteMovies
+          Username: response.data.Username,
+          Password: response.data.Password,
+          Email: response.data.Email,
+          Birthday: response.data.Birthday,
+          FavoriteMovies: response.data.FavoriteMovies
         });
       }).catch(function (error) {
         console.log(error);
@@ -37091,7 +37091,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54950" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58268" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

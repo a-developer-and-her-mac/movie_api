@@ -36,11 +36,11 @@ export class ProfileView extends React.Component {
     })
       .then(response => {
         this.setState({
-          Username: res.data.Username,
-          Password: res.data.Password,
-          Email: res.data.Email,
-          Birthday: res.data.Birthday,
-          FavoriteMovies: res.data.FavoriteMovies
+          Username: response.data.Username,
+          Password: response.data.Password,
+          Email: response.data.Email,
+          Birthday: response.data.Birthday,
+          FavoriteMovies: response.data.FavoriteMovies
         });
       })
       .catch(function (error) {
