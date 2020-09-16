@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Card from "react-bootstrap/Card";
 import axios from "axios";
 
 import { Link } from "react-router-dom";
@@ -91,18 +92,24 @@ export class ProfileView extends React.Component {
     const { movies } = this.props;
     return (
       <div className="profile-view">
-        <Container>
-          <Row>
-            <Col>
-              <h1>{this.state.username}</h1>
-              <p>{this.state.username}</p>
-              <p>{this.state.password}</p>
-              <p>{this.state.email}</p>
-              <p>{this.state.birthday}</p>
-              <p>{this.state.favoriteMovies}</p>
-            </Col>
-          </Row>
-        </Container>
+        <Card className="profile-card">
+          <Card.Header as="h5">{this.state.Username}</Card.Header>
+          <Card.Body>
+            <Card.Title>Profile</Card.Title>
+            <Card.Text>
+              Username: {this.state.Username}
+            </Card.Text>
+            <Card.Text>
+              Password: *******
+            </Card.Text>
+            <Card.Text>
+              Email: {this.state.Email}
+            </Card.Text>
+            <Card.Text>
+              Favorite Movies: {this.state.FavoriteMovies}
+            </Card.Text>
+          </Card.Body>
+        </Card>
       </div>
     )
   }

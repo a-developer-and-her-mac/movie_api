@@ -6,3 +6,15 @@ sans-serif;
 .director-container {
   font-family: $font-stack;
 }
+
+.button-director {
+  background-color: $first-color;
+  border: none;
+  margin: 10px;
+}
+
+.button-director:hover,
+.button-director:focus {
+  background-color: $second-color;
+  border: none;
+}

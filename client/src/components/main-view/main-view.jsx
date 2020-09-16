@@ -118,37 +118,36 @@ export class MainView extends React.Component {
                 )
               }
               } />
-
-              <Route path="/movies/:movieId" render={({ match }) =>
-                <MovieView movie={movies.find(m => m._id === match.params.movieId)} />} />
-
-              <Route path="/directors/:name" render={({ match }) => {
-                if (!movies) return <div className="main-view" />;
-                return <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director} />
-              }
-              } />
-
-
-              <Route path="/genres/:name" render={({ match }) =>
-                <GenreView genre={movies.find(m => m.Genre.Name === match.params.name).Genre} />} />
-
-
-              <Route path="/register" render={() => <RegistrationView />} />
-
-              <Route path="/login" render={() => <LoginView />} />
-
-              <Route path="/users" render={() => <ProfileView />} />
-
-              {/* fix profile link */}
-              <Link to={`/users`}>
-                <Button variant="link" className="button-profile">
-                  {user}
-                </Button>
-              </Link>
-
-
             </Row>
           </Container>
+
+          <Route path="/movies/:movieId" render={({ match }) =>
+            <MovieView movie={movies.find(m => m._id === match.params.movieId)} />} />
+
+          <Route path="/directors/:name" render={({ match }) => {
+            if (!movies) return <div className="main-view" />;
+            return <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director} />
+          }
+          } />
+
+
+          <Route path="/genres/:name" render={({ match }) =>
+            <GenreView genre={movies.find(m => m.Genre.Name === match.params.name).Genre} />} />
+
+
+          <Route path="/register" render={() => <RegistrationView />} />
+
+          <Route path="/login" render={() => <LoginView />} />
+
+          <Route path="/users" render={() => <ProfileView />} />
+
+          {/* fix profile link */}
+          <Link to={`/users`}>
+            <Button variant="link" className="button-profile">
+              {user}
+            </Button>
+          </Link>
+
         </div>
       </Router >
     );

@@ -1,6 +1,5 @@
-.main-view-container {
+.main-view {
   font-family: "Poiret One", sans-serif;
-  display: flex;
 }
 .movie-title {
   text-align: center;
@@ -57,6 +56,18 @@
 }
 .director-container {
   font-family: "Poiret One", sans-serif;
+}
+
+.button-director {
+  background-color: #87556f;
+  border: none;
+  margin: 10px;
+}
+
+.button-director:hover,
+.button-director:focus {
+  background-color: #59405c;
+  border: none;
 }
 .span-login {
   text-decoration: underline;
