@@ -1,6 +1,60 @@
 .main-view {
   font-family: "Poiret One", sans-serif;
 }
+
+.button-logout {
+  background-color: #87556f;
+  border: none;
+  margin: 10px;
+}
+@media (max-width: 576px) {
+  .button-logout {
+    width: 80vw;
+  }
+}
+
+.button-logout:hover,
+.button-logout:focus {
+  background-color: #59405c;
+  border: none;
+}
+
+.button-home {
+  background-color: #87556f;
+  border: none;
+  margin: 10px;
+}
+@media (max-width: 576px) {
+  .button-home {
+    width: 80vw;
+  }
+}
+
+.button-home:hover,
+.button-home:focus {
+  background-color: #59405c;
+  border: none;
+}
+
+.button-profile {
+  background-color: #87556f;
+  border: none;
+  margin: 10px;
+  color: white;
+}
+@media (max-width: 576px) {
+  .button-profile {
+    width: 80vw;
+  }
+}
+
+.button-profile:hover,
+.button-profile:focus {
+  background-color: #59405c;
+  border: none;
+  color: white;
+  text-decoration: none;
+}
 .movie-title {
   text-align: center;
   font-weight: bold;

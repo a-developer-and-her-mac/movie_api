@@ -1,6 +1,71 @@
+$first-color : #87556f;
+$second-color: #59405c;
 $font-stack: "Poiret One",
 sans-serif;
 
+@mixin for-phone-landscape-down {
+  @media (max-width: 576px) {
+    @content;
+  }
+}
+
 .main-view {
   font-family: $font-stack;
+}
+
+
+.button-logout {
+  background-color: $first-color;
+  border: none;
+  margin: 10px;
+
+  @include for-phone-landscape-down {
+    width: 80vw;
+  }
+
+}
+
+.button-logout:hover,
+.button-logout:focus {
+  background-color: $second-color;
+  border: none;
+}
+
+
+.button-home {
+  background-color: $first-color;
+  border: none;
+  margin: 10px;
+
+  @include for-phone-landscape-down {
+    width: 80vw;
+  }
+
+}
+
+.button-home:hover,
+.button-home:focus {
+  background-color: $second-color;
+  border: none;
+}
+
+
+.button-profile {
+  background-color: $first-color;
+  border: none;
+  margin: 10px;
+  color: white;
+
+  @include for-phone-landscape-down {
+    width: 80vw;
+  }
+
+}
+
+.button-profile:hover,
+.button-profile:focus {
+  background-color: $second-color;
+  border: none;
+  color: white;
+  text-decoration: none;
 }

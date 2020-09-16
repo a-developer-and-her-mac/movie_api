@@ -92,24 +92,26 @@ export class ProfileView extends React.Component {
     const { movies } = this.props;
     return (
       <div className="profile-view">
-        <Card className="profile-card">
-          <Card.Header as="h5">{this.state.Username}</Card.Header>
-          <Card.Body>
-            <Card.Title>Profile</Card.Title>
-            <Card.Text>
-              Username: {this.state.Username}
+        <Container className="profile-view-container">
+          <Card className="profile-card">
+            <Card.Header as="h5">{this.state.Username}</Card.Header>
+            <Card.Body>
+              <Card.Title>Profile</Card.Title>
+              <Card.Text>
+                Username: {this.state.Username}
+              </Card.Text>
+              <Card.Text>
+                Password: *******
             </Card.Text>
-            <Card.Text>
-              Password: *******
-            </Card.Text>
-            <Card.Text>
-              Email: {this.state.Email}
-            </Card.Text>
-            <Card.Text>
-              Favorite Movies: {this.state.FavoriteMovies}
-            </Card.Text>
-          </Card.Body>
-        </Card>
+              <Card.Text>
+                Email: {this.state.Email}
+              </Card.Text>
+              <Card.Text>
+                Favorite Movies: {this.state.FavoriteMovies}
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </Container>
       </div>
     )
   }

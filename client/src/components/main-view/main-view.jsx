@@ -5,6 +5,9 @@ import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
+import NavDropdown from "react-bootstrap/NavDropdown";
 
 import "./main-view.scss";
 
@@ -92,6 +95,7 @@ export class MainView extends React.Component {
     this.setState({
       user: null
     })
+    window.open('/', '_self');
   }
 
 
@@ -105,6 +109,29 @@ export class MainView extends React.Component {
     return (
 
       <Router>
+        <Navbar bg="light" expand="lg">
+          <Navbar.Brand>Fave-Flix</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav>
+              <Link to={`/`}>
+                <Button className="button-home">
+                  Home
+              </Button>
+              </Link>
+              <Link to={`/users`}>
+                <Button variant="link" className="button-profile">
+                  {user}
+                </Button>
+              </Link>
+              <Button className="button-logout" onClick={() => this.logOutHandler()}>
+                Logout
+            </Button>
+            </Nav>
+
+          </Navbar.Collapse>
+        </Navbar>
+
         <div className="main-view">
           <Container className="main-view-container">
             <Row>
@@ -140,13 +167,6 @@ export class MainView extends React.Component {
           <Route path="/login" render={() => <LoginView />} />
 
           <Route path="/users" render={() => <ProfileView />} />
-
-          {/* fix profile link */}
-          <Link to={`/users`}>
-            <Button variant="link" className="button-profile">
-              {user}
-            </Button>
-          </Link>
 
         </div>
       </Router >
