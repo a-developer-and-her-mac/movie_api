@@ -183,7 +183,7 @@ app.get("/users/:Username", passport.authenticate('jwt', {
 });
 
 // Update user info
-app.put("/users/:Username",
+app.put("/users/:Username/info",
   // Validation logic for request.
   [check("Username", "Username is required.").isLength({
       min: 5
