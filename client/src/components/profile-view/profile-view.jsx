@@ -61,10 +61,10 @@ export class ProfileView extends React.Component {
     axios.put(`https://faveflix-api.herokuapp.com/users/${username}`, {
       headers: { Authorization: `Bearer ${token}` },
 
-      Username: this.state.username,
-      Password: this.state.password,
-      Email: this.state.email,
-      Birthday: this.state.birthday,
+      Username: username,
+      Password: this.password,
+      Email: this.email,
+      Birthday: this.birthday,
     })
       .then(response => {
         const data = response.data;
@@ -82,7 +82,6 @@ export class ProfileView extends React.Component {
     const token = localStorage.getItem("token");
 
     axios.delete(`https://faveflix-api.herokuapp.com/users/${username}`, {
-
       headers: { Authorization: `Bearer ${token}` },
 
       Username: username

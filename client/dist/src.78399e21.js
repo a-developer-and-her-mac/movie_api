@@ -38521,10 +38521,10 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         headers: {
           Authorization: "Bearer ".concat(token)
         },
-        Username: _this.state.username,
-        Password: _this.state.password,
-        Email: _this.state.email,
-        Birthday: _this.state.birthday
+        Username: username,
+        Password: _this.password,
+        Email: _this.email,
+        Birthday: _this.birthday
       }).then(function (response) {
         var data = response.data;
         localStorage.setItem("user", data.Username);
@@ -39804,7 +39804,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63565" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64182" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
