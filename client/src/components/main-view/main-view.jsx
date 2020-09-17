@@ -7,7 +7,7 @@ import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import NavDropdown from "react-bootstrap/NavDropdown";
+
 
 import "./main-view.scss";
 
@@ -109,16 +109,15 @@ export class MainView extends React.Component {
     return (
 
       <Router>
-        <Navbar bg="light" expand="lg">
-          <Navbar.Brand>Fave-Flix</Navbar.Brand>
+        <Navbar className="navbar" bg="light" expand="lg">
+          <Navbar.Brand>
+            <Link to="/" className="home-link">
+              Fave-Flix
+            </Link>
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav>
-              <Link to={`/`}>
-                <Button className="button-home">
-                  Home
-              </Button>
-              </Link>
               <Link to={`/users`}>
                 <Button variant="link" className="button-profile">
                   {user}

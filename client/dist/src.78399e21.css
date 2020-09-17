@@ -55,6 +55,21 @@
   color: white;
   text-decoration: none;
 }
+
+.navbar {
+  font-family: "Poiret One", sans-serif;
+}
+
+.home-link {
+  text-decoration: none;
+  color: black;
+}
+
+.home-link:hover,
+.home-link:focus {
+  text-decoration: none;
+  color: black;
+}
 .movie-title {
   text-align: center;
   font-weight: bold;
@@ -113,7 +128,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  min-height: 80vh;
   text-align: center;
 }
 
@@ -133,7 +148,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  min-height: 80vh;
   text-align: center;
 }
 

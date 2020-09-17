@@ -16,7 +16,7 @@ export function RegistrationView(props) {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [birthdate, setBirthdate] = useState("");
+  const [birthday, setBirthday] = useState("");
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -24,7 +24,7 @@ export function RegistrationView(props) {
       Username: username,
       Password: password,
       Email: email,
-      Birthdate: birthdate
+      Birthday: birthday
     })
       .then(response => {
         const data = response.data;
@@ -60,9 +60,9 @@ export function RegistrationView(props) {
     </Form.Text>
             </Form.Group>
 
-            <Form.Group controlId="formBasicBirthdate">
-              <Form.Label className="birthdate-label">Birthdate</Form.Label>
-              <Form.Control type="date" placeholder="Birthdate" value={birthdate} onChange={e => setBirthdate(e.target.value)} />
+            <Form.Group controlId="formBasicBirthday">
+              <Form.Label className="birthday-label">Birthdate</Form.Label>
+              <Form.Control type="date" placeholder="Birthday" value={birthday} onChange={e => setBirthday(e.target.value)} />
             </Form.Group>
 
             <Form.Group controlId="formBasicCheckbox">
