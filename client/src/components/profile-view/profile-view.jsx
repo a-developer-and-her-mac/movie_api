@@ -18,13 +18,17 @@ export class ProfileView extends React.Component {
     this.state = {
       movies: [],
       user: null,
-      username: null,
-      password: null,
-      email: null,
-      birthday: null,
+      username: "",
+      password: "",
+      email: "",
+      birthday: "",
       favoriteMovies: [],
     };
+
+    this.handleChange = this.handleChange.bind(this);
+
   }
+
 
   componentDidMount() {
     const accessToken = localStorage.getItem("token");
@@ -103,9 +107,13 @@ export class ProfileView extends React.Component {
     localStorage.removeItem("token");
   }
 
-  eventTarget = (value) => {
-    this.setState({ value: event.target.value })
+  handleChange = (event) => {
+    const target = event.target;
+    const name = target.name;
+    const value = event.target.value;
+    this.setState({ [name]: value });
   }
+
 
 
   render() {
@@ -145,23 +153,23 @@ export class ProfileView extends React.Component {
               <Card.Body>
                 <Form.Group controlId="formBasicUsername">
                   <Form.Label className="username-label">Username</Form.Label>
-                  <Form.Control type="text" placeholder="Enter username" value={this.username} onChange={e => this.eventTarget()} />
+                  <Form.Control type="text" placeholder="Enter username" name="username" value={this.state.username} onChange={this.handleChange} />
                 </Form.Group>
 
                 <Form.Group controlId="formBasicPassword">
                   <Form.Label className="password-label">Password</Form.Label>
-                  <Form.Control type="password" placeholder="Password" value={this.password} onChange={e => this.eventTarget()} />
+                  <Form.Control type="password" placeholder="Password" name="password" value={this.state.password} onChange={this.handleChange} />
                 </Form.Group>
 
                 <Form.Group controlId="formBasicEmail">
                   <Form.Label className="email-label">Email address</Form.Label>
-                  <Form.Control type="email" placeholder="Enter email" value={this.email} onChange={e => this.eventTarget()} />
+                  <Form.Control type="email" placeholder="Enter email" name="email" value={this.state.email} onChange={this.handleChange} />
 
                 </Form.Group>
 
                 <Form.Group controlId="formBasicBirthday">
                   <Form.Label className="birthday-label">Birthdate</Form.Label>
-                  <Form.Control type="date" placeholder="Birthday" value={this.birthday} onChange={e => this.eventTarget()} />
+                  <Form.Control type="date" placeholder="Birthday" name="birthday" value={this.state.birthday} onChange={this.handleChange} />
                 </Form.Group>
 
                 <Form.Group controlId="formBasicCheckbox">

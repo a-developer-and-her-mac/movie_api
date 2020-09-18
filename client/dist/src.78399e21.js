@@ -38481,6 +38481,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -38559,21 +38561,24 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       localStorage.removeItem("token");
     };
 
-    _this.eventTarget = function (value) {
-      _this.setState({
-        value: event.target.value
-      });
+    _this.handleChange = function (event) {
+      var target = event.target;
+      var name = target.name;
+      var value = event.target.value;
+
+      _this.setState(_defineProperty({}, name, value));
     };
 
     _this.state = {
       movies: [],
       user: null,
-      username: null,
-      password: null,
-      email: null,
-      birthday: null,
+      username: "",
+      password: "",
+      email: "",
+      birthday: "",
       favoriteMovies: []
     };
+    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -38636,10 +38641,9 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       }, "Username"), _react.default.createElement(_Form.default.Control, {
         type: "text",
         placeholder: "Enter username",
-        value: this.username,
-        onChange: function onChange(e) {
-          return _this3.eventTarget();
-        }
+        name: "username",
+        value: this.state.username,
+        onChange: this.handleChange
       })), _react.default.createElement(_Form.default.Group, {
         controlId: "formBasicPassword"
       }, _react.default.createElement(_Form.default.Label, {
@@ -38647,10 +38651,9 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       }, "Password"), _react.default.createElement(_Form.default.Control, {
         type: "password",
         placeholder: "Password",
-        value: this.password,
-        onChange: function onChange(e) {
-          return _this3.eventTarget();
-        }
+        name: "password",
+        value: this.state.password,
+        onChange: this.handleChange
       })), _react.default.createElement(_Form.default.Group, {
         controlId: "formBasicEmail"
       }, _react.default.createElement(_Form.default.Label, {
@@ -38658,10 +38661,9 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       }, "Email address"), _react.default.createElement(_Form.default.Control, {
         type: "email",
         placeholder: "Enter email",
-        value: this.email,
-        onChange: function onChange(e) {
-          return _this3.eventTarget();
-        }
+        name: "email",
+        value: this.state.email,
+        onChange: this.handleChange
       })), _react.default.createElement(_Form.default.Group, {
         controlId: "formBasicBirthday"
       }, _react.default.createElement(_Form.default.Label, {
@@ -38669,10 +38671,9 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       }, "Birthdate"), _react.default.createElement(_Form.default.Control, {
         type: "date",
         placeholder: "Birthday",
-        value: this.birthday,
-        onChange: function onChange(e) {
-          return _this3.eventTarget();
-        }
+        name: "birthday",
+        value: this.state.birthday,
+        onChange: this.handleChange
       })), _react.default.createElement(_Form.default.Group, {
         controlId: "formBasicCheckbox"
       }, _react.default.createElement(_Form.default.Check, {
@@ -39804,7 +39805,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64182" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55701" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
