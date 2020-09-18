@@ -38520,13 +38520,14 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       var token = localStorage.getItem("token");
 
       _axios.default.put("https://faveflix-api.herokuapp.com/users/".concat(username), {
-        headers: {
-          Authorization: "Bearer ".concat(token)
-        },
         Username: username,
         Password: _this.password,
         Email: _this.email,
         Birthday: _this.birthday
+      }, {
+        headers: {
+          Authorization: "Bearer ".concat(token)
+        }
       }).then(function (response) {
         var data = response.data;
         localStorage.setItem("user", data.Username);
@@ -39805,7 +39806,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55701" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55607" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
