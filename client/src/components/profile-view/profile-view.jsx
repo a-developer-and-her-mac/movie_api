@@ -15,6 +15,11 @@ export class ProfileView extends React.Component {
   constructor(props) {
     super();
 
+    this.username = undefined;
+    this.password = undefined;
+    this.email = undefined;
+    this.birthday = undefined;
+
     this.state = {
       movies: [],
       user: null,
@@ -24,8 +29,6 @@ export class ProfileView extends React.Component {
       birthday: "",
       favoriteMovies: [],
     };
-
-    this.handleChange = this.handleChange.bind(this);
 
   }
 
@@ -64,7 +67,7 @@ export class ProfileView extends React.Component {
 
     axios.put(`https://faveflix-api.herokuapp.com/users/${username}`, {
 
-      Username: username,
+      Username: this.username,
       Password: this.password,
       Email: this.email,
       Birthday: this.birthday,
@@ -76,7 +79,8 @@ export class ProfileView extends React.Component {
       .then(response => {
         const data = response.data;
         localStorage.setItem("user", data.Username);
-        window.open("/", "_self");
+        window.open("/users", "_self");
+        alert("Update Successful.")
       })
       .catch(e => {
         console.log(e)
@@ -110,14 +114,18 @@ export class ProfileView extends React.Component {
     localStorage.removeItem("token");
   }
 
-  handleChange = (event) => {
-    const target = event.target;
-    const name = target.name;
-    const value = event.target.value;
-    this.setState({ [name]: value });
+  setUsername(input) {
+    this.username = input;
   }
-
-
+  setPassword(input) {
+    this.password = input;
+  }
+  setEmail(input) {
+    this.email = input;
+  }
+  setBirthday(input) {
+    this.Birthday = input;
+  }
 
   render() {
 
@@ -156,23 +164,23 @@ export class ProfileView extends React.Component {
               <Card.Body>
                 <Form.Group controlId="formBasicUsername">
                   <Form.Label className="username-label">Username</Form.Label>
-                  <Form.Control type="text" placeholder="Enter username" name="username" value={this.state.username} onChange={this.handleChange} />
+                  <Form.Control type="text" placeholder="Enter username" name="username" value={this.username} onChange={e => this.setUsername(e.target.value)} />
                 </Form.Group>
 
                 <Form.Group controlId="formBasicPassword">
                   <Form.Label className="password-label">Password</Form.Label>
-                  <Form.Control type="password" placeholder="Password" name="password" value={this.state.password} onChange={this.handleChange} />
+                  <Form.Control type="password" placeholder="Password" name="password" value={this.password} onChange={e => this.setPassword(e.target.value)} />
                 </Form.Group>
 
                 <Form.Group controlId="formBasicEmail">
                   <Form.Label className="email-label">Email address</Form.Label>
-                  <Form.Control type="email" placeholder="Enter email" name="email" value={this.state.email} onChange={this.handleChange} />
+                  <Form.Control type="email" placeholder="Enter email" name="email" value={this.email} onChange={e => this.setEmail(e.target.value)} />
 
                 </Form.Group>
 
                 <Form.Group controlId="formBasicBirthday">
                   <Form.Label className="birthday-label">Birthdate</Form.Label>
-                  <Form.Control type="date" placeholder="Birthday" name="birthday" value={this.state.birthday} onChange={this.handleChange} />
+                  <Form.Control type="date" placeholder="Birthday" name="birthday" value={this.state.birthday} onChange={e => this.setBirthday(e.target.value)} />
                 </Form.Group>
 
                 <Form.Group controlId="formBasicCheckbox">

@@ -38481,8 +38481,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -38520,7 +38518,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       var token = localStorage.getItem("token");
 
       _axios.default.put("https://faveflix-api.herokuapp.com/users/".concat(username), {
-        Username: username,
+        Username: _this.username,
         Password: _this.password,
         Email: _this.email,
         Birthday: _this.birthday
@@ -38531,7 +38529,8 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       }).then(function (response) {
         var data = response.data;
         localStorage.setItem("user", data.Username);
-        window.open("/", "_self");
+        window.open("/users", "_self");
+        alert("Update Successful.");
       }).catch(function (e) {
         console.log(e);
       });
@@ -38562,14 +38561,10 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       localStorage.removeItem("token");
     };
 
-    _this.handleChange = function (event) {
-      var target = event.target;
-      var name = target.name;
-      var value = event.target.value;
-
-      _this.setState(_defineProperty({}, name, value));
-    };
-
+    _this.username = undefined;
+    _this.password = undefined;
+    _this.email = undefined;
+    _this.birthday = undefined;
     _this.state = {
       movies: [],
       user: null,
@@ -38579,7 +38574,6 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       birthday: "",
       favoriteMovies: []
     };
-    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -38613,6 +38607,26 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "setUsername",
+    value: function setUsername(input) {
+      this.username = input;
+    }
+  }, {
+    key: "setPassword",
+    value: function setPassword(input) {
+      this.password = input;
+    }
+  }, {
+    key: "setEmail",
+    value: function setEmail(input) {
+      this.email = input;
+    }
+  }, {
+    key: "setBirthday",
+    value: function setBirthday(input) {
+      this.Birthday = input;
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this3 = this;
@@ -38643,8 +38657,10 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         type: "text",
         placeholder: "Enter username",
         name: "username",
-        value: this.state.username,
-        onChange: this.handleChange
+        value: this.username,
+        onChange: function onChange(e) {
+          return _this3.setUsername(e.target.value);
+        }
       })), _react.default.createElement(_Form.default.Group, {
         controlId: "formBasicPassword"
       }, _react.default.createElement(_Form.default.Label, {
@@ -38653,8 +38669,10 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         type: "password",
         placeholder: "Password",
         name: "password",
-        value: this.state.password,
-        onChange: this.handleChange
+        value: this.password,
+        onChange: function onChange(e) {
+          return _this3.setPassword(e.target.value);
+        }
       })), _react.default.createElement(_Form.default.Group, {
         controlId: "formBasicEmail"
       }, _react.default.createElement(_Form.default.Label, {
@@ -38663,8 +38681,10 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         type: "email",
         placeholder: "Enter email",
         name: "email",
-        value: this.state.email,
-        onChange: this.handleChange
+        value: this.email,
+        onChange: function onChange(e) {
+          return _this3.setEmail(e.target.value);
+        }
       })), _react.default.createElement(_Form.default.Group, {
         controlId: "formBasicBirthday"
       }, _react.default.createElement(_Form.default.Label, {
@@ -38674,7 +38694,9 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         placeholder: "Birthday",
         name: "birthday",
         value: this.state.birthday,
-        onChange: this.handleChange
+        onChange: function onChange(e) {
+          return _this3.setBirthday(e.target.value);
+        }
       })), _react.default.createElement(_Form.default.Group, {
         controlId: "formBasicCheckbox"
       }, _react.default.createElement(_Form.default.Check, {
@@ -39806,7 +39828,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55607" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49749" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
