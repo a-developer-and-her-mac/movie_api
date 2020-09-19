@@ -131,6 +131,10 @@ export class ProfileView extends React.Component {
   render() {
 
     const { movies } = this.props;
+    const favMovies = movies.filter((movie) =>
+      this.state.favoriteMovies.includes(movie._id)
+    );
+
     return (
       <div className="profile-view">
         <Container className="profile-view-container">
@@ -149,9 +153,6 @@ export class ProfileView extends React.Component {
                 </Card.Text>
                 <Card.Text className="text-card">
                   Birthday: {this.state.Birthday}
-                </Card.Text>
-                <Card.Text className="text-card">
-                  Favorite Movies: {this.state.FavoriteMovies}
                 </Card.Text>
                 <Button className="button-delete" onClick={() => this.handleDeregistration()}>
                   Delete Account
@@ -186,6 +187,18 @@ export class ProfileView extends React.Component {
                 <Button className="button-update" onClick={() => this.handleUpdate()}>
                   Update
                 </Button>
+              </Card.Body>
+            </Card>
+            <Card className="favorites-card">
+              <Card.Header as="h5">Favorite Movies</Card.Header>
+              <Card.Body>
+                {favMovies.map((movie) => (
+                  <div key={movie._id} className="fav-movies-button">
+                    <Link to={`/movies/${movie._id}`}>
+                      <Button variant="link">{movie.Title}</Button>
+                    </Link>
+                  </div>
+                ))}
               </Card.Body>
             </Card>
           </CardGroup>
