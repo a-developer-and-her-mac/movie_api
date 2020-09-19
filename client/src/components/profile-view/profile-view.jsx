@@ -180,7 +180,7 @@ export class ProfileView extends React.Component {
 
                 <Form.Group controlId="formBasicBirthday">
                   <Form.Label className="birthday-label">Birthday</Form.Label>
-                  <Form.Control type="date" placeholder="Birthday" name="birthday" value={this.state.birthday} onChange={e => this.setBirthday(e.target.value)} />
+                  <Form.Control type="date" placeholder="Birthday" name="birthday" value={this.birthday} onChange={e => this.setBirthday(e.target.value)} />
                 </Form.Group>
 
                 <Button className="button-update" onClick={() => this.handleUpdate()}>
