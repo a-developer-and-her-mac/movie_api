@@ -5,11 +5,33 @@ sans-serif;
 
 .profile-view {
   font-family: $font-stack;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  text-align: center;
 }
 
-
-.button-delete {
+.button-delete,
+.button-update {
   background-color: $first-color;
   border: none;
+}
+
+.button-delete:hover,
+.button-delete:focus,
+.button-update:hover,
+.button-update:focus {
+  background-color: $second-color;
+  border: none;
+  color: white;
+  text-decoration: none;
+}
+
+.birthday-label {
+  font-size: 20px;
+}
+
+.text-card {
+  font-size: 20px;
 }

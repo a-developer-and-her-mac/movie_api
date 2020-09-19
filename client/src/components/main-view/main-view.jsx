@@ -109,7 +109,7 @@ export class MainView extends React.Component {
     return (
 
       <Router>
-        <Navbar className="navbar" bg="light" expand="lg">
+        <Navbar className="nav-bar" bg="light" expand="lg">
           <Navbar.Brand>
             <Link to="/" className="home-link">
               Fave-Flix
@@ -120,7 +120,7 @@ export class MainView extends React.Component {
             <Nav>
               <Link to={`/users`}>
                 <Button variant="link" className="button-profile">
-                  {user}
+                  Account
                 </Button>
               </Link>
               <Button className="button-logout" onClick={() => this.logOutHandler()}>
@@ -130,7 +130,6 @@ export class MainView extends React.Component {
 
           </Navbar.Collapse>
         </Navbar>
-
         <div className="main-view">
           <Container className="main-view-container">
             <Row>
@@ -165,7 +164,7 @@ export class MainView extends React.Component {
 
           <Route path="/login" render={() => <LoginView />} />
 
-          <Route path="/users" render={() => <ProfileView />} />
+          <Route path="/users" render={() => <ProfileView movies={movies} />} />
 
         </div>
       </Router >

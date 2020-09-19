@@ -10,6 +10,7 @@ import axios from "axios";
 import CardGroup from "react-bootstrap/CardGroup";
 
 import { Link } from "react-router-dom";
+import "./profile-view.scss";
 
 export class ProfileView extends React.Component {
   constructor(props) {
@@ -124,7 +125,7 @@ export class ProfileView extends React.Component {
     this.email = input;
   }
   setBirthday(input) {
-    this.Birthday = input;
+    this.birthday = input;
   }
 
   render() {
@@ -135,22 +136,21 @@ export class ProfileView extends React.Component {
         <Container className="profile-view-container">
           <CardGroup>
             <Card className="profile-card">
-              <Card.Header as="h5">{this.state.Username}</Card.Header>
+              <Card.Header as="h5">Profile</Card.Header>
               <Card.Body>
-                <Card.Title>Profile</Card.Title>
-                <Card.Text>
+                <Card.Text className="text-card">
                   Username: {this.state.Username}
                 </Card.Text>
-                <Card.Text>
+                <Card.Text className="text-card">
                   Password: *******
             </Card.Text>
-                <Card.Text>
+                <Card.Text className="text-card">
                   Email: {this.state.Email}
                 </Card.Text>
-                <Card.Text>
+                <Card.Text className="text-card">
                   Birthday: {this.state.Birthday}
                 </Card.Text>
-                <Card.Text>
+                <Card.Text className="text-card">
                   Favorite Movies: {this.state.FavoriteMovies}
                 </Card.Text>
                 <Button className="button-delete" onClick={() => this.handleDeregistration()}>
@@ -179,13 +179,10 @@ export class ProfileView extends React.Component {
                 </Form.Group>
 
                 <Form.Group controlId="formBasicBirthday">
-                  <Form.Label className="birthday-label">Birthdate</Form.Label>
+                  <Form.Label className="birthday-label">Birthday</Form.Label>
                   <Form.Control type="date" placeholder="Birthday" name="birthday" value={this.state.birthday} onChange={e => this.setBirthday(e.target.value)} />
                 </Form.Group>
 
-                <Form.Group controlId="formBasicCheckbox">
-                  <Form.Check type="checkbox" label="Check me out" />
-                </Form.Group>
                 <Button className="button-update" onClick={() => this.handleUpdate()}>
                   Update
                 </Button>

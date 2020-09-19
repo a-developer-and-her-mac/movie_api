@@ -56,7 +56,7 @@
   text-decoration: none;
 }
 
-.navbar {
+.nav-bar {
   font-family: "Poiret One", sans-serif;
 }
 
@@ -69,6 +69,38 @@
 .home-link:focus {
   text-decoration: none;
   color: black;
+}
+.profile-view {
+  font-family: "Poiret One", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  text-align: center;
+}
+
+.button-delete,
+.button-update {
+  background-color: #87556f;
+  border: none;
+}
+
+.button-delete:hover,
+.button-delete:focus,
+.button-update:hover,
+.button-update:focus {
+  background-color: #59405c;
+  border: none;
+  color: white;
+  text-decoration: none;
+}
+
+.birthday-label {
+  font-size: 20px;
+}
+
+.text-card {
+  font-size: 20px;
 }
 .movie-title {
   text-align: center;
@@ -233,7 +265,7 @@
 .username-label,
 .password-label,
 .email-label,
-.birthdate-label {
+.birthday-label {
   font-size: 20px;
 }
 

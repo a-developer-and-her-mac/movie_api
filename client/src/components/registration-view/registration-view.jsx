@@ -61,7 +61,7 @@ export function RegistrationView(props) {
             </Form.Group>
 
             <Form.Group controlId="formBasicBirthday">
-              <Form.Label className="birthday-label">Birthdate</Form.Label>
+              <Form.Label className="birthday-label">Birthday</Form.Label>
               <Form.Control type="date" placeholder="Birthday" value={birthday} onChange={e => setBirthday(e.target.value)} />
             </Form.Group>
 
