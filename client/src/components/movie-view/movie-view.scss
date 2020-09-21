@@ -46,7 +46,8 @@ sans-serif;
 
 .button-goBack,
 .button-director,
-.button-genre {
+.button-genre,
+.button-favorite {
   background-color: $first-color;
   margin: 20px 10px 20px 10px;
   border: none;
@@ -57,7 +58,9 @@ sans-serif;
 .button-genre:hover,
 .button-goBack:focus,
 .button-director:focus,
-.button-genre:focus {
+.button-genre:focus,
+.button-favorite:hover,
+.button-favorite:focus {
   background-color: $second-color;
   border: none;
 }

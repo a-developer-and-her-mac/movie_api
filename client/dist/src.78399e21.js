@@ -38775,6 +38775,8 @@ var _Col = _interopRequireDefault(require("react-bootstrap/Col"));
 
 var _Row = _interopRequireDefault(require("react-bootstrap/Row"));
 
+var _axios = _interopRequireDefault(require("axios"));
+
 var _reactRouterDom = require("react-router-dom");
 
 require("./movie-view.scss");
@@ -38815,14 +38817,41 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this);
     _this.state = {
-      movies: []
+      movies: [],
+      favoriteMovies: []
     };
     return _this;
   }
 
   _createClass(MovieView, [{
+    key: "addToFavoriteMovies",
+    value: function addToFavoriteMovies(movie) {
+      var _this2 = this;
+
+      var username = localStorage.getItem("user");
+      var token = localStorage.getItem("token");
+
+      _axios.default.post("https://faveflix-api.herokuapp.com/users/".concat(username, "/Movies/").concat(movie), {
+        FavoriteMovies: this.FavoriteMovies
+      }, {
+        headers: {
+          Authorization: "Bearer ".concat(token)
+        }
+      }).then(function (response) {
+        _this2.setState({
+          FavoriteMovies: response.data.FavoriteMovies
+        });
+      }).catch(function (error) {
+        console.log(error);
+      });
+
+      alert("movie successfully added.");
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       var movie = this.props.movie;
       if (!movie) return null;
       return _react.default.createElement(_Container.default, {
@@ -38868,7 +38897,12 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
         to: "/genres/".concat(movie.Genre.Name)
       }, _react.default.createElement(_Button.default, {
         className: "button-genre"
-      }, "Genre"))))));
+      }, "Genre")), _react.default.createElement(_Button.default, {
+        className: "button-favorite",
+        onClick: function onClick() {
+          return _this3.addToFavoriteMovies(movie._id);
+        }
+      }, "Add to Favorites")))));
     }
   }]);
 
@@ -38893,7 +38927,7 @@ MovieView.propTypes = {
     ImagePath: _propTypes.default.string.isRequired
   })
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./movie-view.scss":"components/movie-view/movie-view.scss"}],"components/genre-view/genre-view.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","axios":"../node_modules/axios/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./movie-view.scss":"components/movie-view/movie-view.scss"}],"components/genre-view/genre-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -39856,7 +39890,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49683" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57703" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

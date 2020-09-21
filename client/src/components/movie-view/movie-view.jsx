@@ -4,6 +4,7 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import axios from "axios";
 
 import { Link } from "react-router-dom";
 
@@ -15,8 +16,32 @@ export class MovieView extends React.Component {
     super();
 
     this.state = {
-      movies: []
+      movies: [],
+      favoriteMovies: [],
     };
+  }
+
+  addToFavoriteMovies(movie) {
+    const username = localStorage.getItem("user");
+    const token = localStorage.getItem("token");
+
+    axios.post(`https://faveflix-api.herokuapp.com/users/${username}/Movies/${movie}`, {
+
+      FavoriteMovies: this.FavoriteMovies,
+    },
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    )
+      .then(response => {
+        this.setState({
+          FavoriteMovies: response.data.FavoriteMovies
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    alert("movie successfully added.")
   }
 
 
@@ -61,6 +86,9 @@ export class MovieView extends React.Component {
                   Genre
                 </Button>
               </Link>
+              <Button className="button-favorite" onClick={() => this.addToFavoriteMovies(movie._id)}>
+                Add to Favorites
+              </Button>
             </div>
           </Col>
         </Row>
