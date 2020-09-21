@@ -29,6 +29,7 @@ export class ProfileView extends React.Component {
       email: "",
       birthday: "",
       favoriteMovies: [],
+      FavoriteMovies: []
     };
 
   }
@@ -131,9 +132,6 @@ export class ProfileView extends React.Component {
   render() {
 
     const { movies } = this.props;
-    const favMovies = movies.filter((movie) =>
-      this.state.favoriteMovies.includes(movie._id)
-    );
 
     return (
       <div className="profile-view">
@@ -192,13 +190,16 @@ export class ProfileView extends React.Component {
             <Card className="favorites-card">
               <Card.Header as="h5">Favorite Movies</Card.Header>
               <Card.Body>
-                {favMovies.map((movie) => (
-                  <div key={movie._id} className="fav-movies-button">
-                    <Link to={`/movies/${movie._id}`}>
-                      <Button variant="link">{movie.Title}</Button>
-                    </Link>
-                  </div>
-                ))}
+                {this.state.FavoriteMovies.length === 0 && <div>No favorites</div>}
+                <div>
+                  <ul>
+                    {this.state.FavoriteMovies.length > 0 && movies.map((movie) => {
+                      {
+                        this.state.FavoriteMovies.find(movie._id) && <li key={movie._id}>{movie.Title}</li>
+                      }
+                    })}
+                  </ul>
+                </div>
               </Card.Body>
             </Card>
           </CardGroup>

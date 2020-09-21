@@ -102,6 +102,11 @@
 .text-card {
   font-size: 20px;
 }
+
+.button-fav-movies {
+  color: black;
+  text-decoration: none;
+}
 .movie-title {
   text-align: center;
   font-weight: bold;
