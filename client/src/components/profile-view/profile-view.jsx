@@ -29,7 +29,7 @@ export class ProfileView extends React.Component {
       email: "",
       birthday: "",
       favoriteMovies: [],
-      FavoriteMovies: []
+      FavoriteMovies: [],
     };
 
   }
@@ -195,7 +195,7 @@ export class ProfileView extends React.Component {
                   <ul>
                     {this.state.FavoriteMovies.length > 0 && movies.map((movie) => {
                       {
-                        this.state.FavoriteMovies.find(movie._id) && <li key={movie._id}>{movie.Title}</li>
+                        this.state.FavoriteMovies.filter(movie._id) && <li key={movie._id}>{movie.Title}</li>
                       }
                     })}
                   </ul>
