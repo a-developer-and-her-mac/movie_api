@@ -80,7 +80,8 @@
 }
 
 .button-delete,
-.button-update {
+.button-update,
+.button-remove-items {
   background-color: #87556f;
   border: none;
 }
@@ -88,7 +89,9 @@
 .button-delete:hover,
 .button-delete:focus,
 .button-update:hover,
-.button-update:focus {
+.button-update:focus,
+.button-remove-items:hover,
+.button-remove-items:focus {
   background-color: #59405c;
   border: none;
   color: white;
@@ -106,6 +109,16 @@
 .button-fav-movies {
   color: black;
   text-decoration: none;
+}
+
+.favorite-items {
+  list-style-type: none;
+  text-align: center;
+  margin-bottom: 10%;
+}
+
+.button-remove-items {
+  margin-left: 5%;
 }
 .movie-title {
   text-align: center;

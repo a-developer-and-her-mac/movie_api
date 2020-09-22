@@ -116,6 +116,28 @@ export class ProfileView extends React.Component {
     localStorage.removeItem("token");
   }
 
+  removeItem(movie) {
+    const username = localStorage.getItem("user");
+    const token = localStorage.getItem("token");
+
+    axios.delete(`https://faveflix-api.herokuapp.com/users/${username}/Movies/${movie}`, {
+      headers: { Authorization: `Bearer ${token}` },
+
+      FavoriteMovies: this.FavoriteMovies,
+
+    })
+      .then(response => {
+        this.setState({
+          FavoriteMovies: response.data.FavoriteMovies
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    alert("movie successfully removed.")
+
+  }
+
   setUsername(input) {
     this.username = input;
   }
@@ -133,6 +155,11 @@ export class ProfileView extends React.Component {
 
     const { movies } = this.props;
 
+    const Username = this.state.Username,
+      Email = this.state.Email,
+      Birthday = this.state.Birthday,
+      FavoriteMovies = this.state.FavoriteMovies;
+
     return (
       <div className="profile-view">
         <Container className="profile-view-container">
@@ -141,16 +168,16 @@ export class ProfileView extends React.Component {
               <Card.Header as="h5">Profile</Card.Header>
               <Card.Body>
                 <Card.Text className="text-card">
-                  Username: {this.state.Username}
+                  Username: {Username}
                 </Card.Text>
                 <Card.Text className="text-card">
                   Password: *******
             </Card.Text>
                 <Card.Text className="text-card">
-                  Email: {this.state.Email}
+                  Email: {Email}
                 </Card.Text>
                 <Card.Text className="text-card">
-                  Birthday: {this.state.Birthday}
+                  Birthday: {Birthday}
                 </Card.Text>
                 <Button className="button-delete" onClick={() => this.handleDeregistration()}>
                   Delete Account
@@ -190,12 +217,14 @@ export class ProfileView extends React.Component {
             <Card className="favorites-card">
               <Card.Header as="h5">Favorite Movies</Card.Header>
               <Card.Body>
-                {this.state.FavoriteMovies.length === 0 && <div>No favorites</div>}
+                {FavoriteMovies.length === 0 && <div>No favorites</div>}
                 <div>
                   <ul>
-                    {this.state.FavoriteMovies.length > 0 && movies.map((movie) => {
-                      {
-                        this.state.FavoriteMovies.find(movie._id) && <li key={movie._id}>{movie.Title}</li>
+                    {FavoriteMovies.length > 0 && movies.map((movie) => {
+                      if (movie._id === FavoriteMovies.find(favMovie => favMovie === movie._id)) {
+                        return <li className="favorite-items" key={movie._id}>{movie.Title}
+                          <Button className="button-remove-items" onClick={() => this.removeItem(movie._id)}>Unfavorite</Button>
+                        </li>
                       }
                     })}
                   </ul>

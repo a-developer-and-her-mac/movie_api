@@ -38615,6 +38615,29 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "removeItem",
+    value: function removeItem(movie) {
+      var _this3 = this;
+
+      var username = localStorage.getItem("user");
+      var token = localStorage.getItem("token");
+
+      _axios.default.delete("https://faveflix-api.herokuapp.com/users/".concat(username, "/Movies/").concat(movie), {
+        headers: {
+          Authorization: "Bearer ".concat(token)
+        },
+        FavoriteMovies: this.FavoriteMovies
+      }).then(function (response) {
+        _this3.setState({
+          FavoriteMovies: response.data.FavoriteMovies
+        });
+      }).catch(function (error) {
+        console.log(error);
+      });
+
+      alert("movie successfully removed.");
+    }
+  }, {
     key: "setUsername",
     value: function setUsername(input) {
       this.username = input;
@@ -38637,9 +38660,13 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this4 = this;
 
       var movies = this.props.movies;
+      var Username = this.state.Username,
+          Email = this.state.Email,
+          Birthday = this.state.Birthday,
+          FavoriteMovies = this.state.FavoriteMovies;
       return _react.default.createElement("div", {
         className: "profile-view"
       }, _react.default.createElement(_Container.default, {
@@ -38650,16 +38677,16 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         as: "h5"
       }, "Profile"), _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Card.default.Text, {
         className: "text-card"
-      }, "Username: ", this.state.Username), _react.default.createElement(_Card.default.Text, {
+      }, "Username: ", Username), _react.default.createElement(_Card.default.Text, {
         className: "text-card"
       }, "Password: *******"), _react.default.createElement(_Card.default.Text, {
         className: "text-card"
-      }, "Email: ", this.state.Email), _react.default.createElement(_Card.default.Text, {
+      }, "Email: ", Email), _react.default.createElement(_Card.default.Text, {
         className: "text-card"
-      }, "Birthday: ", this.state.Birthday), _react.default.createElement(_Button.default, {
+      }, "Birthday: ", Birthday), _react.default.createElement(_Button.default, {
         className: "button-delete",
         onClick: function onClick() {
-          return _this3.handleDeregistration();
+          return _this4.handleDeregistration();
         }
       }, "Delete Account"))), _react.default.createElement(_Card.default, {
         className: "edit-profile-card"
@@ -38675,7 +38702,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         name: "username",
         value: this.username,
         onChange: function onChange(e) {
-          return _this3.setUsername(e.target.value);
+          return _this4.setUsername(e.target.value);
         }
       })), _react.default.createElement(_Form.default.Group, {
         controlId: "formBasicPassword"
@@ -38687,7 +38714,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         name: "password",
         value: this.password,
         onChange: function onChange(e) {
-          return _this3.setPassword(e.target.value);
+          return _this4.setPassword(e.target.value);
         }
       })), _react.default.createElement(_Form.default.Group, {
         controlId: "formBasicEmail"
@@ -38699,7 +38726,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         name: "email",
         value: this.email,
         onChange: function onChange(e) {
-          return _this3.setEmail(e.target.value);
+          return _this4.setEmail(e.target.value);
         }
       })), _react.default.createElement(_Form.default.Group, {
         controlId: "formBasicBirthday"
@@ -38711,22 +38738,30 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         name: "birthday",
         value: this.birthday,
         onChange: function onChange(e) {
-          return _this3.setBirthday(e.target.value);
+          return _this4.setBirthday(e.target.value);
         }
       })), _react.default.createElement(_Button.default, {
         className: "button-update",
         onClick: function onClick() {
-          return _this3.handleUpdate();
+          return _this4.handleUpdate();
         }
       }, "Update"))), _react.default.createElement(_Card.default, {
         className: "favorites-card"
       }, _react.default.createElement(_Card.default.Header, {
         as: "h5"
-      }, "Favorite Movies"), _react.default.createElement(_Card.default.Body, null, this.state.FavoriteMovies.length === 0 && _react.default.createElement("div", null, "No favorites"), _react.default.createElement("div", null, _react.default.createElement("ul", null, this.state.FavoriteMovies.length > 0 && movies.map(function (movie) {
-        {
-          _this3.state.FavoriteMovies.find(movie._id) && _react.default.createElement("li", {
+      }, "Favorite Movies"), _react.default.createElement(_Card.default.Body, null, FavoriteMovies.length === 0 && _react.default.createElement("div", null, "No favorites"), _react.default.createElement("div", null, _react.default.createElement("ul", null, FavoriteMovies.length > 0 && movies.map(function (movie) {
+        if (movie._id === FavoriteMovies.find(function (favMovie) {
+          return favMovie === movie._id;
+        })) {
+          return _react.default.createElement("li", {
+            className: "favorite-items",
             key: movie._id
-          }, movie.Title);
+          }, movie.Title, _react.default.createElement(_Button.default, {
+            className: "button-remove-items",
+            onClick: function onClick() {
+              return _this4.removeItem(movie._id);
+            }
+          }, "Unfavorite"));
         }
       }))))))));
     }
@@ -39885,7 +39920,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54837" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59008" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
