@@ -25,3 +25,13 @@ sans-serif;
   background-color: $second-color;
   border: none;
 }
+
+.button-movies {
+  text-decoration: none;
+  color: black;
+}
+
+.button-movies:hover,
+.button-movies:focus {
+  color: $second-color;
+}

@@ -196,6 +196,16 @@
   background-color: #59405c;
   border: none;
 }
+
+.button-movies {
+  text-decoration: none;
+  color: black;
+}
+
+.button-movies:hover,
+.button-movies:focus {
+  color: #59405c;
+}
 .director-view-container {
   font-family: "Poiret One", sans-serif;
   display: flex;
@@ -215,6 +225,16 @@
 .button-director:focus {
   background-color: #59405c;
   border: none;
+}
+
+.button-movies {
+  text-decoration: none;
+  color: black;
+}
+
+.button-movies:hover,
+.button-movies:focus {
+  color: #59405c;
 }
 .span-login {
   text-decoration: underline;

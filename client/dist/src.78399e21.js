@@ -38980,9 +38980,13 @@ var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
 
 var _Card = _interopRequireDefault(require("react-bootstrap/Card"));
 
+var _CardGroup = _interopRequireDefault(require("react-bootstrap/CardGroup"));
+
 var _reactRouterDom = require("react-router-dom");
 
 var _movieView = require("../movie-view/movie-view");
+
+var _mainView = require("../main-view/main-view");
 
 require("./genre-view.scss");
 
@@ -39015,7 +39019,7 @@ var GenreView = /*#__PURE__*/function (_React$Component) {
 
   var _super = _createSuper(GenreView);
 
-  function GenreView() {
+  function GenreView(props) {
     var _this;
 
     _classCallCheck(this, GenreView);
@@ -39028,20 +39032,37 @@ var GenreView = /*#__PURE__*/function (_React$Component) {
   _createClass(GenreView, [{
     key: "render",
     value: function render() {
-      var genre = this.props.genre;
+      var _this$props = this.props,
+          genre = _this$props.genre,
+          movies = _this$props.movies;
       return _react.default.createElement("div", {
         className: "genre-view"
       }, _react.default.createElement(_Container.default, {
         className: "genre-view-container"
-      }, _react.default.createElement(_Card.default, {
+      }, _react.default.createElement(_CardGroup.default, null, _react.default.createElement(_Card.default, {
         style: {
           width: '25rem'
         }
-      }, _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Card.default.Title, null, " ", genre.Name, " "), _react.default.createElement(_Card.default.Text, null, " ", genre.Description, " "), _react.default.createElement(_reactRouterDom.Link, {
+      }, _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Card.default.Title, null, genre.Genre.Name), _react.default.createElement(_Card.default.Text, null, genre.Genre.Description), _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
       }, _react.default.createElement(_Button.default, {
         className: "button-genre"
-      }, "Back"))))));
+      }, "Back")))), _react.default.createElement(_Card.default, {
+        style: {
+          width: '25rem'
+        }
+      }, _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Card.default.Title, null, "Movies in This Genre"), movies.map(function (movie) {
+        if (movie.Genre.Name === genre.Genre.Name) {
+          return _react.default.createElement("div", {
+            key: movie._id
+          }, _react.default.createElement(_reactRouterDom.Link, {
+            to: "movies/".concat(movie._id)
+          }, _react.default.createElement(_Button.default, {
+            variant: "link",
+            className: "button-movies"
+          }, movie.Title)));
+        }
+      }))))));
     }
   }]);
 
@@ -39049,7 +39070,7 @@ var GenreView = /*#__PURE__*/function (_React$Component) {
 }(_react.default.Component);
 
 exports.GenreView = GenreView;
-},{"react":"../node_modules/react/index.js","react-bootstrap/esm/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/esm/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../movie-view/movie-view":"components/movie-view/movie-view.jsx","./genre-view.scss":"components/genre-view/genre-view.scss"}],"components/director-view/director-view.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-bootstrap/esm/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/esm/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","react-bootstrap/CardGroup":"../node_modules/react-bootstrap/esm/CardGroup.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../movie-view/movie-view":"components/movie-view/movie-view.jsx","../main-view/main-view":"components/main-view/main-view.jsx","./genre-view.scss":"components/genre-view/genre-view.scss"}],"components/director-view/director-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -39070,13 +39091,15 @@ var _Card = _interopRequireDefault(require("react-bootstrap/Card"));
 
 var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
 
-var _reactRouterDom = require("react-router-dom");
+var _CardGroup = _interopRequireDefault(require("react-bootstrap/CardGroup"));
 
-require("./director-view.scss");
+var _reactRouterDom = require("react-router-dom");
 
 var _movieView = require("../movie-view/movie-view");
 
 var _mainView = require("../main-view/main-view");
+
+require("./director-view.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -39107,7 +39130,7 @@ var DirectorView = /*#__PURE__*/function (_React$Component) {
 
   var _super = _createSuper(DirectorView);
 
-  function DirectorView() {
+  function DirectorView(props) {
     var _this;
 
     _classCallCheck(this, DirectorView);
@@ -39120,21 +39143,38 @@ var DirectorView = /*#__PURE__*/function (_React$Component) {
   _createClass(DirectorView, [{
     key: "render",
     value: function render() {
-      var director = this.props.director;
+      var _this$props = this.props,
+          director = _this$props.director,
+          movies = _this$props.movies;
       if (!director) return null;
       return _react.default.createElement("div", {
         className: "director-view"
       }, _react.default.createElement(_Container.default, {
         className: "director-view-container"
-      }, _react.default.createElement(_Card.default, {
+      }, _react.default.createElement(_CardGroup.default, null, _react.default.createElement(_Card.default, {
         style: {
           width: '25rem'
         }
-      }, _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Card.default.Title, null, " ", director.Name, " "), _react.default.createElement(_Card.default.Text, null, " Bio: ", director.Bio, " "), _react.default.createElement(_Card.default.Text, null, " Birthday: ", director.Birth, " "), _react.default.createElement(_Card.default.Text, null, " Death: ", director.Death, " "), _react.default.createElement(_reactRouterDom.Link, {
+      }, _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Card.default.Title, null, " ", director.Director.Name, " "), _react.default.createElement(_Card.default.Text, null, " Bio: ", director.Director.Bio, " "), _react.default.createElement(_Card.default.Text, null, " Birthday: ", director.Director.Birth, " "), _react.default.createElement(_Card.default.Text, null, " Death: ", director.Director.Death, " "), _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
       }, _react.default.createElement(_Button.default, {
         className: "button-director"
-      }, "Back"))))));
+      }, "Back")))), _react.default.createElement(_Card.default, {
+        style: {
+          width: '25rem'
+        }
+      }, _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Card.default.Title, null, "Directed Movies:"), movies.map(function (movie) {
+        if (movie.Director.Name === director.Director.Name) {
+          return _react.default.createElement("div", {
+            key: movie._id
+          }, _react.default.createElement(_reactRouterDom.Link, {
+            to: "movies/".concat(movie._id)
+          }, _react.default.createElement(_Button.default, {
+            variant: "link",
+            className: "button-movies"
+          }, movie.Title)));
+        }
+      }))))));
     }
   }]);
 
@@ -39142,7 +39182,7 @@ var DirectorView = /*#__PURE__*/function (_React$Component) {
 }(_react.default.Component);
 
 exports.DirectorView = DirectorView;
-},{"react":"../node_modules/react/index.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./director-view.scss":"components/director-view/director-view.scss","../movie-view/movie-view":"components/movie-view/movie-view.jsx","../main-view/main-view":"components/main-view/main-view.jsx"}],"components/login-view/login-view.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/CardGroup":"../node_modules/react-bootstrap/esm/CardGroup.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../movie-view/movie-view":"components/movie-view/movie-view.jsx","../main-view/main-view":"components/main-view/main-view.jsx","./director-view.scss":"components/director-view/director-view.scss"}],"components/login-view/login-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -39778,7 +39818,8 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           return _react.default.createElement(_directorView.DirectorView, {
             director: movies.find(function (m) {
               return m.Director.Name === match.params.name;
-            }).Director
+            }),
+            movies: movies
           });
         }
       }), _react.default.createElement(_reactRouterDom.Route, {
@@ -39788,7 +39829,8 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           return _react.default.createElement(_genreView.GenreView, {
             genre: movies.find(function (m) {
               return m.Genre.Name === match.params.name;
-            }).Genre
+            }),
+            movies: movies
           });
         }
       }), _react.default.createElement(_reactRouterDom.Route, {
@@ -39920,7 +39962,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59008" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56471" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
