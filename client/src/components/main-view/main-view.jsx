@@ -8,9 +8,12 @@ import Button from "react-bootstrap/Button";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 
+import { connect } from "react-redux";
+import { setMovies } from "../../actions/actions";
 
 import "./main-view.scss";
 
+import MoviesList from "../movies-list/movies-list";
 import { ProfileView } from "../profile-view/profile-view";
 import { GenreView } from "../genre-view/genre-view";
 import { DirectorView } from "../director-view/director-view";
@@ -27,10 +30,7 @@ export class MainView extends React.Component {
     super();
 
     this.state = {
-      movies: [],
-      selectedMovie: null,
       user: null,
-      newUser: null,
     };
   }
 
@@ -49,21 +49,13 @@ export class MainView extends React.Component {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(response => {
-        // Assign the result to the state
-        this.setState({
-          movies: response.data
-        });
+        this.props.setMovies(response.data);
       })
       .catch(function (error) {
         console.log(error);
       });
   }
 
-  onMovieClick(movie) {
-    this.setState({
-      selectedMovie: movie
-    });
-  }
 
 
   onLoggedIn(authData) {
@@ -77,17 +69,6 @@ export class MainView extends React.Component {
     this.getMovies(authData.token);
   }
 
-  registerUser() {
-    this.setState({
-      newUser: true,
-    })
-  }
-
-  userRegistered() {
-    this.setState({
-      newUser: null,
-    })
-  }
 
   logOutHandler() {
     localStorage.removeItem('token');
@@ -102,7 +83,8 @@ export class MainView extends React.Component {
 
   render() {
 
-    const { movies, selectedMovie, user, newUser } = this.state;
+    const { movies } = this.props;
+    const { user } = this.state;
 
     if (!movies) return <div className="main-view" />;
 
@@ -130,17 +112,13 @@ export class MainView extends React.Component {
 
           </Navbar.Collapse>
         </Navbar>
+
         <div className="main-view">
           <Container className="main-view-container">
             <Row>
               <Route exact path="/" render={() => {
                 if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
-                return movies.map(m => (
-                  <Col key={m._id} xs={8} sm={8} md={6} lg={4}>
-                    <MovieCard key={m._id} movie={m} />
-                  </Col>
-                )
-                )
+                return <MoviesList movies={movies} />;
               }
               } />
             </Row>
@@ -171,6 +149,13 @@ export class MainView extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return { movies: state.movies }
+}
+
+export default connect(mapStateToProps, { setMovies })(MainView);
+
 
 MainView.propTypes = {
   movies: PropTypes.shape({
