@@ -70,6 +70,32 @@
   text-decoration: none;
   color: black;
 }
+.movie-card-container {
+  font-family: "Poiret One", sans-serif;
+  text-align: center;
+}
+
+.Card {
+  width: 16rem;
+  margin-top: 10px;
+}
+
+.Card-Title {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.button-open {
+  background-color: #87556f;
+  font-size: 15px;
+  border: none;
+}
+
+.button-open:hover,
+.button-open:focus {
+  background-color: #59405c;
+  border: none;
+}
 .profile-view {
   font-family: "Poiret One", sans-serif;
   display: flex;
@@ -322,32 +348,6 @@
 }
 
 .button-register:hover {
-  background-color: #59405c;
-  border: none;
-}
-.movie-card-container {
-  font-family: "Poiret One", sans-serif;
-  text-align: center;
-}
-
-.Card {
-  width: 16rem;
-  margin-top: 10px;
-}
-
-.Card-Title {
-  font-weight: bold;
-  text-decoration: underline;
-}
-
-.button-open {
-  background-color: #87556f;
-  font-size: 15px;
-  border: none;
-}
-
-.button-open:hover,
-.button-open:focus {
   background-color: #59405c;
   border: none;
 }
