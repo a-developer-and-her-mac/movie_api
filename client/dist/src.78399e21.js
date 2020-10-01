@@ -36749,6 +36749,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.setMovies = setMovies;
 exports.setFilter = setFilter;
+exports.setUser = setUser;
 exports.SET_FILTER = exports.SET_MOVIES = void 0;
 var SET_MOVIES = "SET_MOVIES";
 exports.SET_MOVIES = SET_MOVIES;
@@ -36765,6 +36766,13 @@ function setMovies(value) {
 function setFilter(value) {
   return {
     type: SET_FILTER,
+    value: value
+  };
+}
+
+function setUser(value) {
+  return {
+    type: SET_USER,
     value: value
   };
 }
@@ -41155,7 +41163,6 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
     _this.email = undefined;
     _this.birthday = undefined;
     _this.state = {
-      movies: [],
       user: null,
       username: "",
       password: "",
@@ -41429,7 +41436,6 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this);
     _this.state = {
-      movies: [],
       favoriteMovies: []
     };
     return _this;
@@ -42241,9 +42247,9 @@ var MainView = /*#__PURE__*/function (_React$Component) {
               return _this3.onLoggedIn(user);
             }
           });
-          return _react.default.createElement(_moviesList.default, {
+          return _react.default.createElement(_Col.default, null, _react.default.createElement(_moviesList.default, {
             movies: movies
-          });
+          }), ";");
         }
       }))), _react.default.createElement(_reactRouterDom.Route, {
         path: "/movies/:movieId",
@@ -42322,11 +42328,6 @@ MainView.propTypes = {
     Title: _propTypes.default.string.isRequired,
     Description: _propTypes.default.string.isRequired,
     ImagePath: _propTypes.default.string.isRequired
-  }),
-  selectedMovie: _propTypes.default.shape({
-    Title: _propTypes.default.string.isRequired,
-    Description: _propTypes.default.string.isRequired,
-    ImagePath: _propTypes.default.string.isRequired
   })
 };
 },{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Navbar":"../node_modules/react-bootstrap/esm/Navbar.js","react-bootstrap/Nav":"../node_modules/react-bootstrap/esm/Nav.js","react-redux":"../node_modules/react-redux/es/index.js","../../actions/actions":"actions/actions.js","./main-view.scss":"components/main-view/main-view.scss","../movies-list/movies-list":"components/movies-list/movies-list.jsx","../profile-view/profile-view":"components/profile-view/profile-view.jsx","../genre-view/genre-view":"components/genre-view/genre-view.jsx","../director-view/director-view":"components/director-view/director-view.jsx","../registration-view/registration-view":"components/registration-view/registration-view.jsx","../login-view/login-view":"components/login-view/login-view.jsx","../movie-card/movie-card":"components/movie-card/movie-card.jsx","../movie-view/movie-view":"components/movie-view/movie-view.jsx","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js"}],"reducers/reducers.js":[function(require,module,exports) {
@@ -42367,9 +42368,23 @@ function movies() {
   }
 }
 
+function userProfile() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _actions.SET_USER:
+      return action.value;
+
+    default:
+      return state;
+  }
+}
+
 var moviesApp = (0, _redux.combineReducers)({
   visibilityFilter: visibilityFilter,
-  movies: movies
+  movies: movies,
+  userProfile: userProfile
 });
 var _default = moviesApp;
 exports.default = _default;
@@ -42475,7 +42490,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49183" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50561" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

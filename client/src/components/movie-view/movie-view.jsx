@@ -16,7 +16,6 @@ export class MovieView extends React.Component {
     super();
 
     this.state = {
-      movies: [],
       favoriteMovies: [],
     };
   }

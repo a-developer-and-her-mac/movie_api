@@ -22,7 +22,6 @@ export class ProfileView extends React.Component {
     this.birthday = undefined;
 
     this.state = {
-      movies: [],
       user: null,
       username: "",
       password: "",

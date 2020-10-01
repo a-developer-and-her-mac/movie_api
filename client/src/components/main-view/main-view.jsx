@@ -118,7 +118,11 @@ export class MainView extends React.Component {
             <Row>
               <Route exact path="/" render={() => {
                 if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
-                return <MoviesList movies={movies} />;
+                return (
+                  <Col>
+                    <MoviesList movies={movies} />;
+                  </Col>
+                )
               }
               } />
             </Row>
@@ -159,11 +163,6 @@ export default connect(mapStateToProps, { setMovies })(MainView);
 
 MainView.propTypes = {
   movies: PropTypes.shape({
-    Title: PropTypes.string.isRequired,
-    Description: PropTypes.string.isRequired,
-    ImagePath: PropTypes.string.isRequired
-  }),
-  selectedMovie: PropTypes.shape({
     Title: PropTypes.string.isRequired,
     Description: PropTypes.string.isRequired,
     ImagePath: PropTypes.string.isRequired
