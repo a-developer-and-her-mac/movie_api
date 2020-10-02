@@ -3,6 +3,12 @@ $second-color: #59405c;
 $font-stack: "Poiret One",
 sans-serif;
 
+@mixin for-phone-landscape-down {
+  @media (max-width: 576px) {
+    @content;
+  }
+}
+
 
 .span-register {
   text-decoration: underline;
@@ -18,7 +24,7 @@ sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  min-height: 90vh;
   font-family: $font-stack;
   margin-top: 20px;
   text-align: center;
@@ -41,6 +47,11 @@ sans-serif;
   border: none;
   margin-bottom: 10px;
   width: 20%;
+
+  @include for-phone-landscape-down {
+    width: 40%;
+  }
+
 }
 
 .button-register:hover {
