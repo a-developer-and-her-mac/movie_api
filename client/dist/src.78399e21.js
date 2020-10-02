@@ -41367,6 +41367,11 @@ ProfileView.propTypes = {
     Email: _propTypes.default.string.isRequired,
     Birthday: _propTypes.default.date,
     FavoriteMovies: _propTypes.default.array
+  }),
+  movies: _propTypes.default.shape({
+    Title: _propTypes.default.string,
+    Description: _propTypes.default.string,
+    ImagePath: _propTypes.default.string
   })
 };
 },{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","axios":"../node_modules/axios/index.js","react-bootstrap/CardGroup":"../node_modules/react-bootstrap/esm/CardGroup.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./profile-view.scss":"components/profile-view/profile-view.scss"}],"components/movie-view/movie-view.scss":[function(require,module,exports) {
@@ -41570,6 +41575,8 @@ var _Card = _interopRequireDefault(require("react-bootstrap/Card"));
 
 var _CardGroup = _interopRequireDefault(require("react-bootstrap/CardGroup"));
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
 var _reactRouterDom = require("react-router-dom");
 
 var _movieView = require("../movie-view/movie-view");
@@ -41658,7 +41665,18 @@ var GenreView = /*#__PURE__*/function (_React$Component) {
 }(_react.default.Component);
 
 exports.GenreView = GenreView;
-},{"react":"../node_modules/react/index.js","react-bootstrap/esm/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/esm/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","react-bootstrap/CardGroup":"../node_modules/react-bootstrap/esm/CardGroup.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../movie-view/movie-view":"components/movie-view/movie-view.jsx","../main-view/main-view":"components/main-view/main-view.jsx","./genre-view.scss":"components/genre-view/genre-view.scss"}],"components/director-view/director-view.scss":[function(require,module,exports) {
+GenreView.propTypes = {
+  genre: _propTypes.default.shape({
+    Name: _propTypes.default.string,
+    Description: _propTypes.default.string
+  }),
+  movies: _propTypes.default.shape({
+    Title: _propTypes.default.string,
+    Description: _propTypes.default.string,
+    ImagePath: _propTypes.default.string
+  })
+};
+},{"react":"../node_modules/react/index.js","react-bootstrap/esm/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/esm/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","react-bootstrap/CardGroup":"../node_modules/react-bootstrap/esm/CardGroup.js","prop-types":"../node_modules/prop-types/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../movie-view/movie-view":"components/movie-view/movie-view.jsx","../main-view/main-view":"components/main-view/main-view.jsx","./genre-view.scss":"components/genre-view/genre-view.scss"}],"components/director-view/director-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -41680,6 +41698,8 @@ var _Card = _interopRequireDefault(require("react-bootstrap/Card"));
 var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
 
 var _CardGroup = _interopRequireDefault(require("react-bootstrap/CardGroup"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _reactRouterDom = require("react-router-dom");
 
@@ -41770,7 +41790,20 @@ var DirectorView = /*#__PURE__*/function (_React$Component) {
 }(_react.default.Component);
 
 exports.DirectorView = DirectorView;
-},{"react":"../node_modules/react/index.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/CardGroup":"../node_modules/react-bootstrap/esm/CardGroup.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../movie-view/movie-view":"components/movie-view/movie-view.jsx","../main-view/main-view":"components/main-view/main-view.jsx","./director-view.scss":"components/director-view/director-view.scss"}],"components/login-view/login-view.scss":[function(require,module,exports) {
+DirectorView.propTypes = {
+  director: _propTypes.default.shape({
+    Name: _propTypes.default.string,
+    Bio: _propTypes.default.string,
+    Birth: _propTypes.default.date,
+    Death: _propTypes.default.date
+  }),
+  movies: _propTypes.default.shape({
+    Title: _propTypes.default.string,
+    Description: _propTypes.default.string,
+    ImagePath: _propTypes.default.string
+  })
+};
+},{"react":"../node_modules/react/index.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/CardGroup":"../node_modules/react-bootstrap/esm/CardGroup.js","prop-types":"../node_modules/prop-types/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../movie-view/movie-view":"components/movie-view/movie-view.jsx","../main-view/main-view":"components/main-view/main-view.jsx","./director-view.scss":"components/director-view/director-view.scss"}],"components/login-view/login-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -42490,7 +42523,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50561" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60608" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

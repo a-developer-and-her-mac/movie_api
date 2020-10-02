@@ -4,6 +4,7 @@ import Row from "react-bootstrap/esm/Row";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import CardGroup from "react-bootstrap/CardGroup";
+import PropTypes from "prop-types";
 
 import { Link } from "react-router-dom";
 import { MovieView } from "../movie-view/movie-view";
@@ -57,4 +58,17 @@ export class GenreView extends React.Component {
       </div>
     )
   }
+}
+
+
+GenreView.propTypes = {
+  genre: PropTypes.shape({
+    Name: PropTypes.string,
+    Description: PropTypes.string,
+  }),
+  movies: PropTypes.shape({
+    Title: PropTypes.string,
+    Description: PropTypes.string,
+    ImagePath: PropTypes.string
+  })
 }

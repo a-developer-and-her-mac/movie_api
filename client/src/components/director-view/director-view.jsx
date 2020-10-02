@@ -3,6 +3,7 @@ import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import CardGroup from "react-bootstrap/CardGroup";
+import PropTypes from "prop-types";
 
 import { Link } from "react-router-dom";
 import { MovieView } from "../movie-view/movie-view";
@@ -62,4 +63,19 @@ export class DirectorView extends React.Component {
       </div>
     )
   }
+}
+
+
+DirectorView.propTypes = {
+  director: PropTypes.shape({
+    Name: PropTypes.string,
+    Bio: PropTypes.string,
+    Birth: PropTypes.date,
+    Death: PropTypes.date
+  }),
+  movies: PropTypes.shape({
+    Title: PropTypes.string,
+    Description: PropTypes.string,
+    ImagePath: PropTypes.string
+  })
 }

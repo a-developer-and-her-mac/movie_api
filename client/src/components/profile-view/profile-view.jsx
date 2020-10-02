@@ -247,5 +247,10 @@ ProfileView.propTypes = {
     Email: PropTypes.string.isRequired,
     Birthday: PropTypes.date,
     FavoriteMovies: PropTypes.array
+  }),
+  movies: PropTypes.shape({
+    Title: PropTypes.string,
+    Description: PropTypes.string,
+    ImagePath: PropTypes.string
   })
 };
