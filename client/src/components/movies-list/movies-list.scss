@@ -1,0 +1,16 @@
+@mixin for-phone-landscape-down {
+  @media (max-width: 576px) {
+    @content;
+  }
+}
+
+
+.movie-col {
+  display: flex;
+  justify-content: center;
+  margin-left: 2vw;
+
+  @include for-phone-landscape-down {
+    margin-left: 0;
+  }
+}

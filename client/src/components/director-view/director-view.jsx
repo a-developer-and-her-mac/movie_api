@@ -49,7 +49,7 @@ export class DirectorView extends React.Component {
                 {movies.map((movie) => {
                   if (movie.Director.Name === director.Director.Name) {
                     return (<div key={movie._id}>
-                      <Link to={`movies/${movie._id}`}>
+                      <Link to={`/movies/${movie._id}`}>
                         <Button variant="link" className="button-movies">{movie.Title}</Button>
                       </Link>
                     </div>

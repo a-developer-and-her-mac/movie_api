@@ -70,6 +70,11 @@
   text-decoration: none;
   color: black;
 }
+.form-filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .movie-card-container {
   font-family: "Poiret One", sans-serif;
   text-align: center;
@@ -95,6 +100,16 @@
 .button-open:focus {
   background-color: #59405c;
   border: none;
+}
+.movie-col {
+  display: flex;
+  justify-content: center;
+  margin-left: 2vw;
+}
+@media (max-width: 576px) {
+  .movie-col {
+    margin-left: 0;
+  }
 }
 .profile-view {
   font-family: "Poiret One", sans-serif;
