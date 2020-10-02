@@ -248,9 +248,9 @@ ProfileView.propTypes = {
     Birthday: PropTypes.date,
     FavoriteMovies: PropTypes.array
   }),
-  movies: PropTypes.shape({
+  movies: PropTypes.arrayOf(PropTypes.shape({
     Title: PropTypes.string,
     Description: PropTypes.string,
     ImagePath: PropTypes.string
-  })
+  }))
 };
