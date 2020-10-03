@@ -90,7 +90,7 @@ export class MainView extends React.Component {
 
     return (
 
-      <Router>
+      <Router basename="/client">
         <Navbar className="nav-bar" bg="light" expand="lg">
           <Navbar.Brand>
             <Link to="/" className="home-link">

@@ -7,7 +7,8 @@ const express = require("express"),
   Models = require("./models.js"),
   Movies = Models.Movie,
   Users = Models.User,
-  cors = require('cors');
+  cors = require("cors"),
+  path = require("path");
 
 const {
   check,
@@ -299,6 +300,10 @@ app.delete("/users/:Username", passport.authenticate('jwt', {
 });
 
 app.use(express.static("public"));
+app.use("/client", express.static(path.join(__dirname, "client", "dist")));
+app.get("/client/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
+});
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
