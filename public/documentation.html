@@ -1,112 +1,135 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>faveFlix</title>
+  </head>
 
-<head>
-  <meta charset="utf-8">
-  <title>faveFlix</title>
-</head>
+  <body>
+    <h1>faveFlix</h1>
+    <p>
+      faveFlix is an application designed to provide movie lovers with access to
+      information about different movies, directors, and genres. Users of this
+      application will be able to sign up, update their personal information and
+      create a list of their favorite movies.
+    </p>
 
-<body>
-  <h1>faveFlix</h1>
-  <p>faveFlix is an application designed to provide movie lovers with access to information
-    about different movies, directors, and genres. Users of this application will be able to
-    sign up, update their personal information and create a list of their favorite movies. </p>
+    <table>
+      <tr>
+        <th>Business Logic</th>
+        <th>URL</th>
+        <th>HTTP Method</th>
+        <th>Request Body Data Format</th>
+        <th>Response Body Data Format</th>
+      </tr>
+      <tr>
+        <td class="table-data">Get a list of all movies.</td>
+        <td class="table-data">/movies</td>
+        <td class="table-data">GET</td>
+        <td class="table-data">None</td>
+        <td class="table-data">
+          A JSON object holding data about all the movies.
+        </td>
+      </tr>
+      <tr>
+        <td class="table-data">Get data about a single movie by title</td>
+        <td class="table-data">/movies/:Title</td>
+        <td class="table-data">GET</td>
+        <td class="table-data">None</td>
+        <td class="table-data">
+          A JSON object holding data about a single movie, containing
+          description, genre, director, image URL, and whether it’s featured or
+          not. Example: { Description:'', Genre:'', Director:'', ImageUrl:'',
+          Featured: }
+        </td>
+      </tr>
+      <tr>
+        <td class="table-data">Return data about a genre by title.</td>
+        <td class="table-data">/movies/:Title/genre</td>
+        <td class="table-data">GET</td>
+        <td class="table-data">None</td>
+        <td class="table-data">
+          A JSON object containing the genre name and description.
+        </td>
+      </tr>
+      <tr>
+        <td class="table-data">
+          Return data about a director by name (bio, birth year, death year)
+        </td>
+        <td class="table-data">/movies/Director/:Name</td>
+        <td class="table-data">GET</td>
+        <td class="table-data">None</td>
+        <td class="table-data">
+          A text message containing information about the director.
+        </td>
+      </tr>
+      <tr>
+        <td class="table-data">Allow new users to register.</td>
+        <td class="table-data">/users</td>
+        <td class="table-data">POST</td>
+        <td class="table-data">
+          A JSON object holding data about the user to add, like: {Username: '',
+          Password:'', Email: '', Birthday: '', }
+        </td>
 
-  <table>
-    <tr>
-      <th>Business Logic</th>
-      <th>URL</th>
-      <th>HTTP Method</th>
-      <th>Request Body Data Format</th>
-      <th>Response Body Data Format</th>
-    </tr>
-    <tr>
-      <td>Get a list of all movies. </td>
-      <td>/movies </td>
-      <td>GET</td>
-      <td>None</td>
-      <td>A JSON object holding data about all the movies.</td>
-    </tr>
-    <tr>
-      <td> Get data about a single movie by title </td>
-      <td> /movies/:Title </td>
-      <td>GET</td>
-      <td>None</td>
-      <td>A JSON object holding data about a single movie,
-        containing description, genre, director, image URL,
-        and whether it’s featured or not. Example: {
-        Description:'',
-        Genre:'',
-        Director:'',
-        ImageUrl:'',
-        Featured:
-        }
-      </td>
-    </tr>
-    <tr>
-      <td>Return data about a genre by title.</td>
-      <td>/movies/:Title/genre</td>
-      <td>GET</td>
-      <td>None</td>
-      <td>A JSON object containing the genre name and description.
-      </td>
-    </tr>
-    <tr>
-      <td>Return data about a director by name (bio, birth year, death year)</td>
-      <td>/movies/Director/:Name</td>
-      <td>GET</td>
-      <td>None</td>
-      <td>A text message containing information about the director. </td>
-    </tr>
-    <tr>
-      <td>Allow new users to register.</td>
-      <td>/users</td>
-      <td>POST</td>
-      <td>A JSON object holding data about the user to add, like:
-        {Username: '',
-        Password:'',
-        Email: '',
-        Birthday: '',
-        }</td>
-
-      <td>A JSON object containing the info for the user just added.</td>
-    </tr>
-    <tr>
-      <td>Allow users to update their info(username, password, email, date of birth).</td>
-      <td>/users/:Username/info</td>
-      <td>PUT</td>
-      <td> A JSON object holding data about the info to update. Example:{
-        Username:'',
-        Password: '',
-        Email:'',
-        Birthday: '',
-        }</td>
-      <td>A JSON object containing the info that was successfully updated.</td>
-    </tr>
-    <tr>
-      <td>Allow users to add a movie to their list of favorites.</td>
-      <td>/users/:Username/Movies/:MovieID</td>
-      <td>POST</td>
-      <td> A JSON object holding the MovieID. Example:
-        {FavoriteMovies: '' }</td>
-      <td>A JSON object containing the user info, including the array of favorite movies.</td>
-    </tr>
-    <tr>
-      <td>Allow users to remove a movie from their list of favorites.</td>
-      <td>/users/:Username/Movies/MovieID</td>
-      <td>DELETE</td>
-      <td>None</td>
-      <td>A text message indicating whether the movie was successfully removed.</td>
-    </tr>
-    <tr>
-      <td>Allow existing users to deregister.</td>
-      <td>/users/:Username</td>
-      <td>DELETE</td>
-      <td>None</td>
-      <td>A text message indicating whether deregistration was successful.</td>
-    </tr>
-  </table>
-
-</body>
-
+        <td>A JSON object containing the info for the user just added.</td>
+      </tr>
+      <tr>
+        <td class="table-data">
+          Allow users to update their info(username, password, email, date of
+          birth).
+        </td>
+        <td class="table-data">/users/:Username/info</td>
+        <td class="table-data">PUT</td>
+        <td class="table-data">
+          A JSON object holding data about the info to update. Example:{
+          Username:'', Password: '', Email:'', Birthday: '', }
+        </td>
+        <td class="table-data">
+          A JSON object containing the info that was successfully updated.
+        </td>
+      </tr>
+      <tr>
+        <td class="table-data">
+          Allow users to add a movie to their list of favorites.
+        </td>
+        <td class="table-data">/users/:Username/Movies/:MovieID</td>
+        <td class="table-data">POST</td>
+        <td class="table-data">
+          A JSON object holding the MovieID. Example: {FavoriteMovies: '' }
+        </td>
+        <td class="table-data">
+          A JSON object containing the user info, including the array of
+          favorite movies.
+        </td>
+      </tr>
+      <tr>
+        <td class="table-data">
+          Allow users to remove a movie from their list of favorites.
+        </td>
+        <td class="table-data">/users/:Username/Movies/MovieID</td>
+        <td class="table-data">DELETE</td>
+        <td class="table-data">None</td>
+        <td class="table-data">
+          A text message indicating whether the movie was successfully removed.
+        </td>
+      </tr>
+      <tr>
+        <td class="table-data">Allow existing users to deregister.</td>
+        <td class="table-data">/users/:Username</td>
+        <td class="table-data">DELETE</td>
+        <td class="table-data">None</td>
+        <td class="table-data">
+          A text message indicating whether deregistration was successful.
+        </td>
+      </tr>
+      <tr>
+        <td class="table-data">Get info about an existing user.</td>
+        <td class="table-data">/users/:Username</td>
+        <td class="table-data">GET</td>
+        <td class="table-data">None</td>
+        <td class="table-data">A json object containing the user info.</td>
+      </tr>
+    </table>
+  </body>
 </html>

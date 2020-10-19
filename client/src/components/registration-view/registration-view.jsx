@@ -12,7 +12,6 @@ import { LoginView } from "../login-view/login-view";
 import "./registration-view.scss";
 
 export function RegistrationView(props) {
-
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -20,19 +19,19 @@ export function RegistrationView(props) {
 
   const handleRegister = (e) => {
     e.preventDefault();
-    axios.post("https://faveflix-api.herokuapp.com/users", {
-      Username: username,
-      Password: password,
-      Email: email,
-      Birthday: birthday
-    })
-      .then(response => {
+    axios
+      .post("https://faveflix-api.herokuapp.com/users", {
+        Username: username,
+        Password: password,
+        Email: email,
+        Birthday: birthday,
+      })
+      .then((response) => {
         const data = response.data;
-        console.log(data);
         window.open("/client", "_self");
       })
-      .catch(e => {
-        console.log("error registering the user")
+      .catch((e) => {
+        alert("error registering the user");
       });
   };
 
@@ -41,44 +40,69 @@ export function RegistrationView(props) {
       <Row>
         <Col xs={12} sm={12} className="Col">
           <Form>
-
             <Form.Group controlId="formBasicUsername">
               <Form.Label className="username-label">Username</Form.Label>
-              <Form.Control type="text" placeholder="Enter username" value={username} onChange={e => setUserName(e.target.value)} />
+              <Form.Control
+                type="text"
+                placeholder="Enter username"
+                value={username}
+                onChange={(e) => setUserName(e.target.value)}
+              />
             </Form.Group>
 
             <Form.Group controlId="formBasicPassword">
               <Form.Label className="password-label">Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
+              <Form.Control
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
             </Form.Group>
 
             <Form.Group controlId="formBasicEmail">
               <Form.Label className="email-label">Email address</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" value={email} onChange={e => setEmail(e.target.value)} />
+              <Form.Control
+                type="email"
+                placeholder="Enter email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
               <Form.Text className="text-muted">
                 We'll never share your email with anyone else.
-    </Form.Text>
+              </Form.Text>
             </Form.Group>
 
             <Form.Group controlId="formBasicBirthday">
               <Form.Label className="birthday-label">Birthday</Form.Label>
-              <Form.Control type="date" placeholder="Birthday" value={birthday} onChange={e => setBirthday(e.target.value)} />
+              <Form.Control
+                type="date"
+                placeholder="Birthday"
+                value={birthday}
+                onChange={(e) => setBirthday(e.target.value)}
+              />
             </Form.Group>
 
             <Form.Group controlId="formBasicCheckbox">
               <Form.Check type="checkbox" label="Check me out" />
             </Form.Group>
-            <Button className="button-register" type="submit" onClick={handleRegister}>
+            <Button
+              className="button-register"
+              type="submit"
+              onClick={handleRegister}
+            >
               Register
-  </Button>
-            <p> Already registered? Click {' '}
+            </Button>
+            <p>
+              {" "}
+              Already registered? Click{" "}
               <Link to={`/login`}>
                 <span className="span-register" type="text">
                   here
-  </span>{' '}
+                </span>{" "}
               </Link>
-  to login.
-        </p>
+              to login.
+            </p>
           </Form>
         </Col>
       </Row>
@@ -91,6 +115,6 @@ RegistrationView.propTypes = {
     Username: PropTypes.string.isRequired,
     Password: PropTypes.string.isRequired,
     Email: PropTypes.string.isRequired,
-    Birthdate: PropTypes.date
-  })
+    Birthdate: PropTypes.date,
+  }),
 };

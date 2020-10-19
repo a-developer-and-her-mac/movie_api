@@ -25,7 +25,6 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 export class MainView extends React.Component {
-
   constructor() {
     super();
 
@@ -35,20 +34,21 @@ export class MainView extends React.Component {
   }
 
   componentDidMount() {
-    let accessToken = localStorage.getItem('token');
+    let accessToken = localStorage.getItem("token");
     if (accessToken !== null) {
       this.setState({
-        user: localStorage.getItem('user')
+        user: localStorage.getItem("user"),
       });
       this.getMovies(accessToken);
     }
   }
 
   getMovies(token) {
-    axios.get('https://faveflix-api.herokuapp.com/movies', {
-      headers: { Authorization: `Bearer ${token}` }
-    })
-      .then(response => {
+    axios
+      .get("https://faveflix-api.herokuapp.com/movies", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
         this.props.setMovies(response.data);
       })
       .catch(function (error) {
@@ -56,12 +56,9 @@ export class MainView extends React.Component {
       });
   }
 
-
-
   onLoggedIn(authData) {
-    console.log(authData);
     this.setState({
-      user: authData.user.Username
+      user: authData.user.Username,
     });
 
     localStorage.setItem("token", authData.token);
@@ -69,27 +66,22 @@ export class MainView extends React.Component {
     this.getMovies(authData.token);
   }
 
-
   logOutHandler() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
     this.setState({
-      user: null
-    })
-    window.open('/', '_self');
+      user: null,
+    });
+    window.open("/", "_self");
   }
 
-
-
   render() {
-
     const { movies } = this.props;
     const { user } = this.state;
 
     if (!movies) return <div className="main-view" />;
 
     return (
-
       <Router basename="/client">
         <Navbar className="nav-bar" bg="light" expand="lg">
           <Navbar.Brand>
@@ -105,62 +97,90 @@ export class MainView extends React.Component {
                   Account
                 </Button>
               </Link>
-              <Button className="button-logout" onClick={() => this.logOutHandler()}>
+              <Button
+                className="button-logout"
+                onClick={() => this.logOutHandler()}
+              >
                 Logout
-            </Button>
+              </Button>
             </Nav>
-
           </Navbar.Collapse>
         </Navbar>
 
         <div className="main-view">
           <Container className="main-view-container">
             <Row>
-              <Route exact path="/" render={() => {
-                if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
-                return <MoviesList movies={movies} />
-              }
-              } />
+              <Route
+                exact
+                path="/"
+                render={() => {
+                  if (!user)
+                    return (
+                      <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
+                    );
+                  return <MoviesList movies={movies} />;
+                }}
+              />
             </Row>
           </Container>
 
-          <Route path="/movies/:movieId" render={({ match }) =>
-            <MovieView movie={movies.find(m => m._id === match.params.movieId)} />} />
+          <Route
+            path="/movies/:movieId"
+            render={({ match }) => (
+              <MovieView
+                movie={movies.find((m) => m._id === match.params.movieId)}
+              />
+            )}
+          />
 
-          <Route path="/directors/:name" render={({ match }) => {
-            if (!movies) return <div className="main-view" />;
-            return <DirectorView director={movies.find(m => m.Director.Name === match.params.name)} movies={movies} />
-          }
-          } />
+          <Route
+            path="/directors/:name"
+            render={({ match }) => {
+              if (!movies) return <div className="main-view" />;
+              return (
+                <DirectorView
+                  director={movies.find(
+                    (m) => m.Director.Name === match.params.name
+                  )}
+                  movies={movies}
+                />
+              );
+            }}
+          />
 
-
-          <Route path="/genres/:name" render={({ match }) =>
-            <GenreView genre={movies.find(m => m.Genre.Name === match.params.name)} movies={movies} />} />
-
+          <Route
+            path="/genres/:name"
+            render={({ match }) => (
+              <GenreView
+                genre={movies.find((m) => m.Genre.Name === match.params.name)}
+                movies={movies}
+              />
+            )}
+          />
 
           <Route path="/register" render={() => <RegistrationView />} />
 
           <Route path="/login" render={() => <LoginView />} />
 
           <Route path="/users" render={() => <ProfileView movies={movies} />} />
-
         </div>
-      </Router >
+      </Router>
     );
   }
 }
 
-const mapStateToProps = state => {
-  return { movies: state.movies }
-}
+const mapStateToProps = (state) => {
+  return { movies: state.movies };
+};
 
 export default connect(mapStateToProps, { setMovies })(MainView);
 
-
 MainView.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.shape({
-    Title: PropTypes.string.isRequired,
-    Description: PropTypes.string.isRequired,
-    ImagePath: PropTypes.string.isRequired
-  }))
-}
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      Title: PropTypes.string.isRequired,
+      Description: PropTypes.string.isRequired,
+      ImagePath: PropTypes.string.isRequired,
+    })
+  ),
+};

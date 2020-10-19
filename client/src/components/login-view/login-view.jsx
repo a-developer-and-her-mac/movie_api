@@ -17,22 +17,20 @@ export function LoginView(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(username, password);
     /* Send a request to the server for authentication */
-    axios.post("https://faveflix-api.herokuapp.com/login", {
-      Username: username,
-      Password: password
-    })
-      .then(response => {
+    axios
+      .post("https://faveflix-api.herokuapp.com/login", {
+        Username: username,
+        Password: password,
+      })
+      .then((response) => {
         const data = response.data;
         props.onLoggedIn(data);
       })
-      .catch(e => {
-        console.log("no such user")
+      .catch((e) => {
+        alert("no such user");
       });
   };
-
-
 
   return (
     <Container className="form-container">
@@ -41,36 +39,50 @@ export function LoginView(props) {
           <Form>
             <Form.Group controlId="formBasicUsername">
               <Form.Label className="username-label">Username</Form.Label>
-              <Form.Control type="text" placeholder="Username" value={username} onChange={e => setUserName(e.target.value)} />
+              <Form.Control
+                type="text"
+                placeholder="Username"
+                value={username}
+                onChange={(e) => setUserName(e.target.value)}
+              />
             </Form.Group>
-
 
             <Form.Group controlId="formBasicPassword">
               <Form.Label className="password-label">Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
+              <Form.Control
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
             </Form.Group>
-            <Button className="button-login" type="button" onClick={handleSubmit}>
+            <Button
+              className="button-login"
+              type="button"
+              onClick={handleSubmit}
+            >
               Login
-        </Button>
+            </Button>
 
-            <p>Not registered? Click {' '}
+            <p>
+              Not registered? Click{" "}
               <Link to={`/register`}>
                 <span className="span-login" type="text">
                   here
-                </span> {' '}
+                </span>{" "}
               </Link>
               to register
-          </p>
+            </p>
           </Form>
         </Col>
       </Row>
-    </Container >
+    </Container>
   );
 }
 
 LoginView.propTypes = {
   user: PropTypes.shape({
     Username: PropTypes.string.isRequired,
-    Password: PropTypes.string.isRequired
-  })
+    Password: PropTypes.string.isRequired,
+  }),
 };
