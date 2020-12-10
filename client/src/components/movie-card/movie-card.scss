@@ -18,6 +18,10 @@ sans-serif;
   text-decoration: underline;
 }
 
+.Card-Text {
+  min-height: 192px;
+}
+
 .button-open {
   background-color: $first-color;
   font-size: 15px;
