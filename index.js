@@ -49,7 +49,7 @@ let topTenMovies = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
 
 // GET requests
 app.get("/", (req, res) => {
-  res.send("Welcome to faveFlix!");
+  res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
 });
 
 app.get("/movies/top", (req, res) => {
