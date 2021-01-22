@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: profile-view/profile-view.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: profile-view/profile-view.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from "react";
+import PropTypes from "prop-types";
+import Container from "react-bootstrap/Container";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Card from "react-bootstrap/Card";
+import axios from "axios";
+import CardGroup from "react-bootstrap/CardGroup";
+
+import { Link } from "react-router-dom";
+import "./profile-view.scss";
+
+export class ProfileView extends React.Component {
+  constructor(props) {
+    super();
+
+    this.username = undefined;
+    this.password = undefined;
+    this.email = undefined;
+    this.birthday = undefined;
+
+    this.state = {
+      user: null,
+      username: "",
+      password: "",
+      email: "",
+      birthday: "",
+      favoriteMovies: [],
+      FavoriteMovies: [],
+    };
+  }
+
+  componentDidMount() {
+    const accessToken = localStorage.getItem("token");
+    this.getUser(accessToken);
+  }
+  /**
+   * gets user info with token
+   * @function getUser
+   * @param {*} token 
+   * @return {object} user info
+   */
+  getUser(token) {
+    const username = localStorage.getItem("user");
+
+    axios
+      .get(`https://faveflix-api.herokuapp.com/users/${username}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        this.setState({
+          Username: response.data.Username,
+          Password: response.data.Password,
+          Email: response.data.Email,
+          Birthday: response.data.Birthday,
+          FavoriteMovies: response.data.FavoriteMovies,
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+  /**
+   * updates user info
+   * @function handleUpdate
+   * @param {event} e 
+   * @param {*} token
+   */
+  handleUpdate = (e) => {
+    const username = localStorage.getItem("user");
+    const token = localStorage.getItem("token");
+
+    axios
+      .put(
+        `https://faveflix-api.herokuapp.com/users/${username}`,
+        {
+          Username: this.username,
+          Password: this.password,
+          Email: this.email,
+          Birthday: this.birthday,
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
+      .then((response) => {
+        const data = response.data;
+        localStorage.setItem("user", data.Username);
+        window.open("/users", "_self");
+        alert("Update Successful.");
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+  /**
+   * deregisters user
+   * @function handleDeregistration
+   * @param {event} e 
+   * @param {*} token
+   */
+  handleDeregistration = (e) => {
+    const username = localStorage.getItem("user");
+    const token = localStorage.getItem("token");
+
+    axios
+      .delete(`https://faveflix-api.herokuapp.com/users/${username}`, {
+        headers: { Authorization: `Bearer ${token}` },
+
+        Username: username,
+      })
+      .then((response) => {
+        const data = response.data;
+        window.open("/", "_self");
+      })
+      .catch((e) => {
+        alert("error deregistering user");
+      });
+
+    this.setState({
+      user: null,
+    });
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+  };
+  /**
+   * removes a movie from favorites
+   * @function removeItem
+   * @param {*} movie 
+   * @param {*} token
+   */
+  removeItem(movie) {
+    const username = localStorage.getItem("user");
+    const token = localStorage.getItem("token");
+
+    axios
+      .delete(
+        `https://faveflix-api.herokuapp.com/users/${username}/Movies/${movie}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+
+          FavoriteMovies: this.FavoriteMovies,
+        }
+      )
+      .then((response) => {
+        this.setState({
+          FavoriteMovies: response.data.FavoriteMovies,
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    alert("movie successfully removed.");
+  }
+
+  setUsername(input) {
+    this.username = input;
+  }
+  setPassword(input) {
+    this.password = input;
+  }
+  setEmail(input) {
+    this.email = input;
+  }
+  setBirthday(input) {
+    this.birthday = input;
+  }
+
+  render() {
+    const { movies } = this.props;
+
+    const Username = this.state.Username,
+      Email = this.state.Email,
+      Birthday = this.state.Birthday,
+      FavoriteMovies = this.state.FavoriteMovies;
+
+    return (
+      &lt;div className="profile-view">
+        &lt;Container className="profile-view-container">
+          &lt;CardGroup>
+            &lt;Card className="profile-card">
+              &lt;Card.Header as="h5">Profile&lt;/Card.Header>
+              &lt;Card.Body>
+                &lt;Card.Text className="text-card">
+                  Username: {Username}
+                &lt;/Card.Text>
+                &lt;Card.Text className="text-card">Email: {Email}&lt;/Card.Text>
+                &lt;Card.Text className="text-card">
+                  Birthday: {Birthday}
+                &lt;/Card.Text>
+                &lt;Button
+                  className="button-delete"
+                  onClick={() => this.handleDeregistration()}
+                >
+                  Delete Account
+                &lt;/Button>
+              &lt;/Card.Body>
+            &lt;/Card>
+            &lt;Card className="edit-profile-card">
+              &lt;Card.Header as="h5">Edit Profile&lt;/Card.Header>
+              &lt;Card.Body>
+                &lt;Form.Group controlId="formBasicUsername">
+                  &lt;Form.Label className="username-label">Username&lt;/Form.Label>
+                  &lt;Form.Control
+                    type="text"
+                    placeholder="Enter username"
+                    name="username"
+                    value={this.username}
+                    onChange={(e) => this.setUsername(e.target.value)}
+                  />
+                &lt;/Form.Group>
+
+                &lt;Form.Group controlId="formBasicPassword">
+                  &lt;Form.Label className="password-label">Password&lt;/Form.Label>
+                  &lt;Form.Control
+                    type="password"
+                    placeholder="Password"
+                    name="password"
+                    value={this.password}
+                    onChange={(e) => this.setPassword(e.target.value)}
+                  />
+                &lt;/Form.Group>
+
+                &lt;Form.Group controlId="formBasicEmail">
+                  &lt;Form.Label className="email-label">Email address&lt;/Form.Label>
+                  &lt;Form.Control
+                    type="email"
+                    placeholder="Enter email"
+                    name="email"
+                    value={this.email}
+                    onChange={(e) => this.setEmail(e.target.value)}
+                  />
+                &lt;/Form.Group>
+
+                &lt;Form.Group controlId="formBasicBirthday">
+                  &lt;Form.Label className="birthday-label">Birthday&lt;/Form.Label>
+                  &lt;Form.Control
+                    type="date"
+                    placeholder="Birthday"
+                    name="birthday"
+                    value={this.birthday}
+                    onChange={(e) => this.setBirthday(e.target.value)}
+                  />
+                &lt;/Form.Group>
+
+                &lt;Button
+                  className="button-update"
+                  onClick={() => this.handleUpdate()}
+                >
+                  Update
+                &lt;/Button>
+              &lt;/Card.Body>
+            &lt;/Card>
+            &lt;Card className="favorites-card">
+              &lt;Card.Header as="h5">Favorite Movies&lt;/Card.Header>
+              &lt;Card.Body>
+                {FavoriteMovies.length === 0 &amp;&amp; &lt;div>No favorites&lt;/div>}
+                &lt;div>
+                  &lt;ul>
+                    {FavoriteMovies.length > 0 &amp;&amp;
+                      movies.map((movie) => {
+                        if (
+                          movie._id ===
+                          FavoriteMovies.find(
+                            (favMovie) => favMovie === movie._id
+                          )
+                        ) {
+                          return (
+                            &lt;li className="favorite-items" key={movie._id}>
+                              {movie.Title}
+                              &lt;Button
+                                className="button-remove-items"
+                                onClick={() => this.removeItem(movie._id)}
+                              >
+                                Unfavorite
+                              &lt;/Button>
+                            &lt;/li>
+                          );
+                        }
+                      })}
+                  &lt;/ul>
+                &lt;/div>
+              &lt;/Card.Body>
+            &lt;/Card>
+          &lt;/CardGroup>
+        &lt;/Container>
+      &lt;/div>
+    );
+  }
+}
+
+ProfileView.propTypes = {
+  user: PropTypes.shape({
+    Username: PropTypes.string.isRequired,
+    Password: PropTypes.string.isRequired,
+    Email: PropTypes.string.isRequired,
+    Birthday: PropTypes.date,
+    FavoriteMovies: PropTypes.array,
+  }),
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      Title: PropTypes.string,
+      Description: PropTypes.string,
+      ImagePath: PropTypes.string,
+    })
+  ),
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addToFavoriteMovies">addToFavoriteMovies</a></li><li><a href="global.html#getMovies">getMovies</a></li><li><a href="global.html#getUser">getUser</a></li><li><a href="global.html#handleDeregistration">handleDeregistration</a></li><li><a href="global.html#handleRegister">handleRegister</a></li><li><a href="global.html#handleSubmit">handleSubmit</a></li><li><a href="global.html#handleUpdate">handleUpdate</a></li><li><a href="global.html#logOutHandler">logOutHandler</a></li><li><a href="global.html#onLoggedIn">onLoggedIn</a></li><li><a href="global.html#removeItem">removeItem</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Fri Jan 22 2021 10:04:18 GMT-0800 (Pacific Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
