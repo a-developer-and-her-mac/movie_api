@@ -14,7 +14,12 @@ import { RegistrationView } from "../registration-view/registration-view";
 export function LoginView(props) {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
-
+  /**
+   * submits user info for login
+   * @function handleSubmit
+   * @param {string} username
+   * @param {string} password
+   */
   const handleSubmit = (e) => {
     e.preventDefault();
     /* Send a request to the server for authentication */

@@ -16,7 +16,14 @@ export function RegistrationView(props) {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [birthday, setBirthday] = useState("");
-
+  /**
+   * handles registration
+   * @function handleRegister
+   * @param {string} username
+   * @param {string} password
+   * @param {string} email
+   * @param {date} birthday
+   */
   const handleRegister = (e) => {
     e.preventDefault();
     axios

@@ -36,7 +36,12 @@ export class ProfileView extends React.Component {
     const accessToken = localStorage.getItem("token");
     this.getUser(accessToken);
   }
-
+  /**
+   * gets user info with token
+   * @function getUser
+   * @param {*} token 
+   * @return {object} user info
+   */
   getUser(token) {
     const username = localStorage.getItem("user");
 
@@ -57,7 +62,12 @@ export class ProfileView extends React.Component {
         console.log(error);
       });
   }
-
+  /**
+   * updates user info
+   * @function handleUpdate
+   * @param {event} e 
+   * @param {*} token
+   */
   handleUpdate = (e) => {
     const username = localStorage.getItem("user");
     const token = localStorage.getItem("token");
@@ -85,7 +95,12 @@ export class ProfileView extends React.Component {
         console.log(e);
       });
   };
-
+  /**
+   * deregisters user
+   * @function handleDeregistration
+   * @param {event} e 
+   * @param {*} token
+   */
   handleDeregistration = (e) => {
     const username = localStorage.getItem("user");
     const token = localStorage.getItem("token");
@@ -110,7 +125,12 @@ export class ProfileView extends React.Component {
     localStorage.removeItem("user");
     localStorage.removeItem("token");
   };
-
+  /**
+   * removes a movie from favorites
+   * @function removeItem
+   * @param {*} movie 
+   * @param {*} token
+   */
   removeItem(movie) {
     const username = localStorage.getItem("user");
     const token = localStorage.getItem("token");

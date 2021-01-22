@@ -42,7 +42,12 @@ export class MainView extends React.Component {
       this.getMovies(accessToken);
     }
   }
-
+  /**
+   * gets the movies from the database
+   * @function getMovies
+   * @param {*} token 
+   * @return {movies}
+   */
   getMovies(token) {
     axios
       .get("https://faveflix-api.herokuapp.com/movies", {
@@ -55,7 +60,11 @@ export class MainView extends React.Component {
         console.log(error);
       });
   }
-
+  /**
+   * on logged in, sets localstorage items like token and user
+   * @function onLoggedIn
+   * @param {*} authData 
+   */
   onLoggedIn(authData) {
     this.setState({
       user: authData.user.Username,
@@ -65,7 +74,10 @@ export class MainView extends React.Component {
     localStorage.setItem("user", authData.user.Username);
     this.getMovies(authData.token);
   }
-
+  /**
+   * on log out, removes local storage items like token and user
+   * @function logOutHandler
+   */
   logOutHandler() {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
