@@ -1,4 +1,4 @@
-# fly.toml file generated for faveflix-api on 2022-11-14T12:02:24-08:00
+# fly.toml file generated for faveflix-api on 2022-11-26T17:21:28-08:00
 
 app = "faveflix-api"
 kill_signal = "SIGINT"
